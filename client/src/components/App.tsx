@@ -1,7 +1,18 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 
 export interface AppProps { compiler: string; framework: string; }
 
-export const App = (props: AppProps) => (
-  <h1>Hello from  {props.compiler} and {props.framework}!</h1>
-);
+type AppState = {
+
+}
+
+export class App extends Component<AppProps, AppState> {
+  constructor(props: AppProps) {
+    super(props)
+  }
+
+  render() {
+    return <h1>Hello from {this.props.compiler} and {this.props.framework}!</h1>
+  }
+
+}
