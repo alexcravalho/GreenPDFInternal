@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
     "start": "nodemon server/index.ts",
-    "build": "webpack -d",
+    "build": "webpack -d --watch",
     "production": "webpack -p"
   },
   "repository": {
@@ -36,6 +36,7 @@
     "webpack-cli": "^3.3.10"
   },
   "dependencies": {
+    "@material-ui/core": "^4.9.2",
     "@types/compression": "^1.7.0",
     "@types/cors": "^2.8.6",
     "compression": "^1.7.4",
