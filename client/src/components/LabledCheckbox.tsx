@@ -1,14 +1,14 @@
-import React, { Component, ReactNode } from 'react';
+import React, { Component } from 'react';
 import { Checkbox, CheckboxProps } from '@material-ui/core';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { withStyles } from '@material-ui/core/styles';
 import { blue } from '@material-ui/core/colors';
 
-interface StartupCheckboxState {
+interface LabledCheckboxState {
   checked: boolean
 }
 
-interface StartupCheckboxProps {
+interface LabledCheckboxProps {
   label: string
 }
 
@@ -22,8 +22,8 @@ const BlueCheckbox = withStyles({
   checked: {},
 })((props: CheckboxProps) => <Checkbox color="default" {...props} />);
 
-export class StartupCheckboxItem extends Component<StartupCheckboxProps, StartupCheckboxState> {
-  constructor(props: StartupCheckboxProps) {
+export class LabledCheckbox extends Component<LabledCheckboxProps, LabledCheckboxState> {
+  constructor(props: LabledCheckboxProps) {
     super(props);
 
     this.state = {
@@ -38,7 +38,7 @@ export class StartupCheckboxItem extends Component<StartupCheckboxProps, Startup
 
   render() {
     return (
-      <div className="startup-checkbox-items">
+      <div className="checkbox-row">
           <FormControlLabel
           control={
             <BlueCheckbox checked={this.state.checked} onChange={this.handleChange('checked')} value="checked" />
