@@ -1,36 +1,14 @@
 import React, { Component } from 'react';
-import { Checkbox, CheckboxProps } from '@material-ui/core';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { withStyles } from '@material-ui/core/styles';
-import { blue } from '@material-ui/core/colors';
+import { BeforeStartup } from './BeforeStartup';
 
-interface AppState {
-  checkedA: boolean,
-  checkedB: boolean,
-  checkedC: boolean,
-  checkedD: boolean
-}
+// interface AppState {
+// }
 
-const BlueCheckbox = withStyles({
-  root: {
-    // color: blue[400],
-    '&$checked': {
-      color: blue[500],
-    },
-  },
-  checked: {},
-})((props: CheckboxProps) => <Checkbox color="default" {...props} />);
-
-export class Form extends Component<{}, AppState> {
+export class Form extends Component<{}, {}> {
   constructor(props: {}) {
     super(props);
 
-    this.state = {
-      checkedA: false,
-      checkedB: false,
-      checkedC: false,
-      checkedD: false,
-    }
+    this.state = {},
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -44,12 +22,7 @@ export class Form extends Component<{}, AppState> {
     return (
       <div>
         <div className="form-left-column">
-          <FormControlLabel
-            control={
-              <BlueCheckbox checked={this.state.checkedA} onChange={this.handleChange('checkedA')} value="checkedA" />
-            }
-            label="Blue Custom Color"
-          />
+          <BeforeStartup />
         </div>
         <div className="form-right-column">
 
