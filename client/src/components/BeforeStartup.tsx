@@ -1,9 +1,8 @@
-import React, { Component, ReactNode } from 'react';
-import { StartupCheckboxItem } from './StartupCheckboxItem'
-import { Checkbox, CheckboxProps } from '@material-ui/core';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { withStyles } from '@material-ui/core/styles';
-import { blue } from '@material-ui/core/colors';
+import React, { Component } from 'react';
+import { LabledCheckbox } from './LabledCheckbox';
+import { OilAdded } from './OilAdded';
+import { Coolant } from './Coolant';
+import { PowerSteering } from './PowerSteering';
 
 interface StartupState {
   labels: string[]
@@ -17,7 +16,7 @@ export class BeforeStartup extends Component<{}, StartupState> {
       labels: [
         "Air Filter / Panty Hoe Check",
         "Check Belt / Hoses",
-        "Check Oil - Added: "
+        "Check Oil"
       ]
     }
   }
@@ -27,8 +26,11 @@ export class BeforeStartup extends Component<{}, StartupState> {
       <div className="before-startup">
         <h3>Before Start up Driver or Certified Helper</h3>
         {this.state.labels.map((label, idx) => (
-          <StartupCheckboxItem key={idx} label={label}/>
+          <LabledCheckbox key={idx} label={label}/>
         ))}
+        <OilAdded />
+        <Coolant />
+        <PowerSteering />
       </div>
     )
   }
