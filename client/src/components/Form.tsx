@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BeforeStartup } from './BeforeStartup';
+import { InsideFromDrivers } from './InsideFromDrivers';
 
 // interface AppState {
 // }
@@ -23,6 +24,7 @@ export class Form extends Component<{}, {}> {
       <div>
         <div className="form-left-column">
           <BeforeStartup />
+          <InsideFromDrivers />
         </div>
         <div className="form-right-column">
 
