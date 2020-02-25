@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { BeforeStartup } from './BeforeStartup';
 import { InsideFromDrivers } from './InsideFromDrivers';
+import { UnderSeat } from './UnderSeat';
+import { OutsideDriver } from './OutsideDriver';
 
 // interface AppState {
 // }
@@ -13,8 +15,6 @@ export class Form extends Component<{}, {}> {
     this.handleChange = this.handleChange.bind(this);
   }
 
-
-
   handleChange = (name: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({ ...this.state, [name]: event.target.checked });
   };
@@ -25,6 +25,8 @@ export class Form extends Component<{}, {}> {
         <div className="form-left-column">
           <BeforeStartup />
           <InsideFromDrivers />
+          <UnderSeat />
+          <OutsideDriver />
         </div>
         <div className="form-right-column">
 
