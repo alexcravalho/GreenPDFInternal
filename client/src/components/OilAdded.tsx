@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FormLabel } from '@material-ui/core';
+import { FormLabel, FormGroup } from '@material-ui/core';
 import { LabledCheckbox } from './LabledCheckbox';
 
 interface OilAddedState {
@@ -18,10 +18,12 @@ export class OilAdded extends Component<{}, OilAddedState> {
   render() {
     return (
       <div className="oil-added">
-        <FormLabel style={{color: 'black'}}>Oil Added: </FormLabel>
-        {this.state.options.map((option, idx) => (
-          <LabledCheckbox key={idx} label={option}/>
-        ))}
+        <FormGroup row>
+          <FormLabel style={{color: 'black'}}>Oil Added: </FormLabel>
+          {this.state.options.map((option, idx) => (
+            <LabledCheckbox key={idx} label={option}/>
+          ))}
+        </FormGroup>
       </div>
     )
   }
