@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FormLabel } from '@material-ui/core';
+import { FormLabel, FormGroup } from '@material-ui/core';
 import { LabledCheckbox } from './LabledCheckbox';
 
 interface PowerSteeringState {
@@ -18,10 +18,12 @@ export class PowerSteering extends Component<{}, PowerSteeringState> {
   render() {
     return (
       <div className="power-steering">
-        <FormLabel style={{color: 'black'}}>Power Steering Added: </FormLabel>
-        {this.state.options.map((option, idx) => (
-          <LabledCheckbox key={idx} label={option}/>
-        ))}
+        <FormGroup row>
+          <FormLabel style={{color: 'black'}}>Power Steering Added: </FormLabel>
+          {this.state.options.map((option, idx) => (
+            <LabledCheckbox key={idx} label={option}/>
+          ))}
+        </FormGroup>
       </div>
     )
   }
