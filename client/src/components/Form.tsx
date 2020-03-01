@@ -3,6 +3,7 @@ import { BeforeStartup } from './BeforeStartup';
 import { InsideFromDrivers } from './InsideFromDrivers';
 import { UnderSeat } from './UnderSeat';
 import { OutsideDriver } from './OutsideDriver';
+import { TruckDriver } from './TruckDriver';
 
 // interface AppState {
 // }
@@ -29,7 +30,7 @@ export class Form extends Component<{}, {}> {
           <OutsideDriver />
         </div>
         <div className="form-right-column">
-
+          <TruckDriver />
         </div>
       </div>
     )
