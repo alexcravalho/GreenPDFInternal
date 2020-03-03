@@ -4,6 +4,7 @@ import { InsideFromDrivers } from './InsideFromDrivers';
 import { UnderSeat } from './UnderSeat';
 import { OutsideDriver } from './OutsideDriver';
 import { TruckDriver } from './TruckDriver';
+import { Back } from './Back';
 
 // interface AppState {
 // }
@@ -31,6 +32,7 @@ export class Form extends Component<{}, {}> {
         </div>
         <div className="form-right-column">
           <TruckDriver />
+          <Back />
         </div>
       </div>
     )
