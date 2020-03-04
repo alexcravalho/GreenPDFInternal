@@ -1,0 +1,28 @@
+.full-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.column-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.form-left-column, .form-right-column {
+  display: flex;
+  flex-direction: column;
+  margin: 40px;
+}
+
+.oil-added {
+  display: flex;
+  flex-direction: row;
+}
+
+.label {
+  margin-right: 10px;
+}
+
+.notes {
+  margin-top: 10px;
+}
