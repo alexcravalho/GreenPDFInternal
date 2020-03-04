@@ -6,6 +6,7 @@ import { OutsideDriver } from './OutsideDriver';
 import { TruckDriver } from './TruckDriver';
 import { Back } from './Back';
 import { InTruckBox } from './InTruckBox';
+import { PassengerSide } from './PassengerSide';
 
 // interface AppState {
 // }
@@ -35,6 +36,7 @@ export class Form extends Component<{}, {}> {
           <TruckDriver />
           <Back />
           <InTruckBox />
+          <PassengerSide />
         </div>
       </div>
     )
