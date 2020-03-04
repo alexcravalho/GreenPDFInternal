@@ -40,11 +40,11 @@ export class InsideFromDrivers extends Component<{}, InsideFromDriversState> {
           <LabledCheckbox key={idx} label={label}/>
         ))}
         <FormGroup row>
-          <FormLabel style={{ color: 'black' }}>Last Service Date: </FormLabel>
+          <FormLabel className="label" style={{color: 'black', lineHeight: '4'}}>Last Service Date: </FormLabel>
           <TextField label="MM/DD/YYYY" />
         </FormGroup>
         <FormGroup row>
-          <FormLabel style={{ color: 'black' }}>Insurance / Registration Expires: </FormLabel>
+          <FormLabel className="label" style={{color: 'black', lineHeight: '4'}}>Insurance / Registration Expires: </FormLabel>
           <TextField label="MM/DD/YYYY" />
         </FormGroup>
         {this.state.labels2.map((label, idx) => (

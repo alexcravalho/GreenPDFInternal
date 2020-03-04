@@ -17,9 +17,9 @@ export class OilAdded extends Component<{}, OilAddedState> {
 
   render() {
     return (
-      <div className="oil-added">
-        <FormGroup row>
-          <FormLabel style={{color: 'black'}}>Oil Added: </FormLabel>
+      <div >
+        <FormGroup className="oil-added" row>
+          <FormLabel className="label" style={{color: 'black', lineHeight: '2.5'}}>Oil Added: </FormLabel>
           {this.state.options.map((option, idx) => (
             <LabledCheckbox key={idx} label={option}/>
           ))}
@@ -28,27 +28,3 @@ export class OilAdded extends Component<{}, OilAddedState> {
     )
   }
 };
-
-
-
-
-
-
-// render() {
-//   return (
-//     <div className="oil-added">
-//       <FormLabel style={{color: 'black'}}>Oil Added: </FormLabel><FormControlLabel
-//         control={
-//           <BlueCheckbox checked={this.state.oilAddedY} onChange={this.handleChange('oilAddedY')} value="checked" />
-//         }
-//         label="Yes"
-//       />
-//       <FormControlLabel
-//         control={
-//           <BlueCheckbox checked={this.state.oilAddedN} onChange={this.handleChange('oilAddedN')} value="checked" />
-//         }
-//         label="No"
-//       />
-//     </div>
-//   )
-// }
