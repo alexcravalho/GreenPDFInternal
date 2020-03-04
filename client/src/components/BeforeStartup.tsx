@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TextField, FormLabel } from '@material-ui/core';
+import { TextField, FormLabel, FormGroup } from '@material-ui/core';
 import { LabledCheckbox } from './LabledCheckbox';
 import { OilAdded } from './OilAdded';
 import { Coolant } from './Coolant';
@@ -32,8 +32,10 @@ export class BeforeStartup extends Component<{}, StartupState> {
         <OilAdded />
         <Coolant />
         <PowerSteering />
-        <FormLabel style={{ color: 'black' }}>Notes: </FormLabel>
-        <TextField multiline rows="5" variant="outlined" />
+        <FormGroup className="notes" row>
+          <FormLabel className="label" style={{ color: 'black' }}>Notes: </FormLabel>
+          <TextField multiline rows="5" variant="outlined" />
+        </FormGroup>
       </div>
     )
   }
