@@ -19,7 +19,7 @@ export class Coolant extends Component<{}, CoolantState> {
     return (
       <div className="coolant">
         <FormGroup row>
-          <FormLabel style={{color: 'black'}}>Coolant: </FormLabel>
+          <FormLabel className="label" style={{color: 'black', lineHeight: '2.5'}}>Coolant: </FormLabel>
           {this.state.options.map((option, idx) => (
             <LabledCheckbox key={idx} label={option}/>
           ))}
