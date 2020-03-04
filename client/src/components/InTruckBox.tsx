@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { TextField, FormLabel, FormGroup } from '@material-ui/core';
 import { LabledCheckbox } from './LabledCheckbox';
 
 interface InTruckBoxState {
