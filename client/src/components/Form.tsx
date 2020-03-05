@@ -7,36 +7,38 @@ import { TruckDriver } from './TruckDriver';
 import { Back } from './Back';
 import { InTruckBox } from './InTruckBox';
 import { PassengerSide } from './PassengerSide';
-
-// interface AppState {
-// }
+import { SubmitButton } from './SubmitButton';
 
 export class Form extends Component<{}, {}> {
   constructor(props: {}) {
     super(props);
 
-    this.state = {},
-    this.handleChange = this.handleChange.bind(this);
+    this.state = {}
   }
 
-  handleChange = (name: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ ...this.state, [name]: event.target.checked });
-  };
+  handleSubmit = () => {
+
+  }
 
   render() {
     return (
-      <div>
-        <div className="form-left-column">
-          <BeforeStartup />
-          <InsideFromDrivers />
-          <UnderSeat />
-          <OutsideDriver />
+      <div className="full-form">
+        <div className="column-container">
+            <div className="form-left-column">
+              <BeforeStartup />
+              <InsideFromDrivers />
+              <UnderSeat />
+              <OutsideDriver />
+            </div>
+            <div className="form-right-column">
+              <TruckDriver />
+              <Back />
+              <InTruckBox />
+              <PassengerSide />
+            </div>
         </div>
-        <div className="form-right-column">
-          <TruckDriver />
-          <Back />
-          <InTruckBox />
-          <PassengerSide />
+        <div className="submission">
+          <SubmitButton handleSubmit={this.handleSubmit}/>
         </div>
       </div>
     )
