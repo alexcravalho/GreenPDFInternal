@@ -39,9 +39,15 @@
     "@material-ui/core": "^4.9.2",
     "@types/compression": "^1.7.0",
     "@types/cors": "^2.8.6",
+    "@types/nodemailer": "^6.4.0",
+    "@types/pdfkit": "^0.10.5",
+    "axios": "^0.19.2",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "html2canvas": "^1.0.0-rc.5",
+    "nodemailer": "^6.4.4",
+    "pdfkit": "^0.11.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   }
