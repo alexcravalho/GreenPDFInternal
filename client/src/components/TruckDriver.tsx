@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { FormLabel, FormGroup, TextField } from '@material-ui/core';
-import { TruckDriverTextField } from './TruckDriverTextField';
 
 interface TruckDriverState {
   labels1: string[],
@@ -8,7 +7,7 @@ interface TruckDriverState {
 }
 
 interface TruckDriverProps {
-  handleChange: Function
+  appStateChange: any
 }
 
 export class TruckDriver extends Component<TruckDriverProps, TruckDriverState> {
@@ -28,7 +27,7 @@ export class TruckDriver extends Component<TruckDriverProps, TruckDriverState> {
           {this.state.labels1.map((label, idx) => (
             <div key={idx}>
               <FormLabel style={{ color: 'black', fontSize: 24, fontWeight: 500 }}>{ label }</FormLabel>
-              <TruckDriverTextField handleChange={this.props.handleChange}/>
+              <TextField onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(label, event.target.value)}} />
             </div>
           ))}
         </FormGroup>
@@ -36,7 +35,7 @@ export class TruckDriver extends Component<TruckDriverProps, TruckDriverState> {
           {this.state.labels2.map((label, idx) => (
             <div key={idx}>
               <FormLabel style={{ color: 'black', fontSize: 24, fontWeight: 500 }}>{ label }</FormLabel>
-              <TextField />
+              <TextField onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(label, event.target.value)}} />
             </div>
           ))}
         </FormGroup>
