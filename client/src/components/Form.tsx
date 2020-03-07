@@ -12,9 +12,10 @@ import { PassengerSide } from './PassengerSide';
 import { SubmitButton } from './SubmitButton';
 
 interface AppState {
-  driver: string,
-  truck: string,
-  date: string
+  'Truck: ': string,
+  'Driver: ': string,
+  'Helper: ': string,
+  'Date: ': string
 }
 
 export class Form extends Component<{}, AppState> {
@@ -22,14 +23,16 @@ export class Form extends Component<{}, AppState> {
     super(props);
 
     this.state = {
-      driver: '',
-      truck: '',
-      date: ''
+      'Truck: ': '',
+      'Driver: ': '',
+      'Helper: ': '',
+      'Date: ': ''
     }
+    this.appStateChange = this.appStateChange.bind(this)
   }
 
-  handleChange = (name: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ ...this.state, [event.target.name]: event.target.value });
+  appStateChange = (name:string, value:string) => {
+    this.setState({...this.state, [name]: value });
   };
 
   handleSubmit = () => {
@@ -39,7 +42,10 @@ export class Form extends Component<{}, AppState> {
         const formImage = canvas.toDataURL('image/png');
         axios.post('/pdf', {
           image: formImage,
-          // name:
+          truck: this.state['Truck: '],
+          driver: this.state['Driver: '],
+          date: this.state['Date: ']
+          // fileName: this.state['Truck: '] + this.state['Driver: '] + this.state['Date: ']
         })
         .then((response) => { console.log(response) })
         .catch((err) => { console.log(err) })
@@ -57,7 +63,7 @@ export class Form extends Component<{}, AppState> {
               <OutsideDriver />
             </div>
             <div className="form-right-column">
-              <TruckDriver handleChange={this.handleChange}/>
+              <TruckDriver appStateChange={this.appStateChange}/>
               <Back />
               <InTruckBox />
               <PassengerSide />
