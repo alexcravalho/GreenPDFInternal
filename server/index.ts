@@ -28,6 +28,7 @@ app.post('/pdf', (req, res) => {
 // add the new PDF to the request object
   req.body.document = doc;
   // send the completed pdf doc to the specified email
+  // tslint:disable-next-line:no-console
   nodemailerSendEmail(req.body).catch((err: any) => { console.log(err) })
   //
 })
