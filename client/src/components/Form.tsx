@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import html2canvas from 'html2canvas';
+import Pdf from "react-to-pdf";
 import axios from 'axios';
 import { BeforeStartup } from './BeforeStartup';
 import { InsideFromDrivers } from './InsideFromDrivers';
@@ -10,6 +10,8 @@ import { Back } from './Back';
 import { InTruckBox } from './InTruckBox';
 import { PassengerSide } from './PassengerSide';
 import { SubmitButton } from './SubmitButton';
+
+const ref = React.createRef<HTMLDivElement>();
 
 interface AppState {
   'Truck: ': string,
@@ -28,7 +30,12 @@ export class Form extends Component<{}, AppState> {
       'Helper: ': '',
       'Date: ': ''
     }
-    this.appStateChange = this.appStateChange.bind(this)
+    this.appStateChange = this.appStateChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    // printForm = document.getElementById('app');
   }
 
   appStateChange = (name:string, value:string) => {
@@ -36,26 +43,50 @@ export class Form extends Component<{}, AppState> {
   };
 
   handleSubmit = () => {
-    const printForm = document.getElementById('app');
-    html2canvas(printForm)
-      .then(canvas => {
-        const formImage = canvas.toDataURL('image/png');
-        axios.post('/pdf', {
-          image: formImage,
-          truck: this.state['Truck: '],
-          driver: this.state['Driver: '],
-          date: this.state['Date: ']
-          // fileName: this.state['Truck: '] + this.state['Driver: '] + this.state['Date: ']
-        })
-        .then((response) => { console.log(response) })
-        .catch((err) => { console.log(err) })
-      });
+    const createdName = this.createFileName(this.state['Truck: '], this.state['Driver: '], this.state['Date: ']);
+
+    // html2canvas(printForm)
+    //   .then((canvas) => {
+    //     const imgData = canvas.toDataURL('image/png');
+    //     console.log(imgData)
+    //     const pdf = new jsPDF();
+    //     pdf.addImage(imgData, 'PNG', 0, 0);
+    //     pdf.save(createdName);
+    //     console.log('pdf created')
+
+    //     axios.post('/pdf', {
+    //       image: formImage,
+    //       fileName: createdName
+    //     })
+    //     .then((response) => { console.log(response) })
+    //     .catch((err) => { console.log(err) })
+    //   });
   };
 
+  createFileName = (t: string, dr: string, da: string) => {
+    if (t.includes(' ')) {
+      t = t.split(' ').join('');
+    }
+    if (dr.includes(' ')) {
+      dr = dr.split(' ').join('');
+    }
+    if (da.includes(' ')) {
+      da = da.split(' ').join('');
+    }
+    if (da.includes('/')) {
+      da = da.split('/').join('-');
+    }
+    return `${t}-${dr}-${da}.pdf`;
+  }
+
   render() {
+    const path = `/home/acrav/ArdvarkBarkInternal/${this.handleSubmit()}`;
     return (
       <div className="full-form">
-        <div className="column-container">
+      <Pdf targetRef={ref} filename="code-example.pdf">
+        {({ toPdf }:any) => <button onClick={toPdf}>Generate Pdf</button>}
+      </Pdf>
+        <div ref={ref} className="column-container">
             <div className="form-left-column">
               <BeforeStartup />
               <InsideFromDrivers />
@@ -70,7 +101,7 @@ export class Form extends Component<{}, AppState> {
             </div>
         </div>
         <div className="submission">
-          {/* <SubmitButton handleSubmit={this.handleSubmit}/> */}
+          <SubmitButton handleSubmit={this.handleSubmit}/>
         </div>
       </div>
     )
