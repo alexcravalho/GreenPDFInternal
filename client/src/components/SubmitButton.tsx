@@ -7,6 +7,6 @@ interface SubmitButtonProps {
 
 export const SubmitButton = (props: SubmitButtonProps) => (
       <div className="submit">
-        <Button variant="contained" color="primary" size="large" onClick={()=> {props.handleSubmit()}}>Submit</Button>
+        <Button variant="contained" color="primary" size="large" onClick={(event: React.MouseEvent<HTMLButtonElement>) => { props.handleSubmit() }}>Submit</Button>
       </div>
 );
