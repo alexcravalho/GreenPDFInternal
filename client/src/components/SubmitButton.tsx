@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Button from '@material-ui/core/Button';
 
 interface SubmitButtonProps {
@@ -7,6 +7,6 @@ interface SubmitButtonProps {
 
 export const SubmitButton = (props: SubmitButtonProps) => (
       <div className="submit">
-        <Button variant="contained" color="primary" size="large" onClick={(event: React.MouseEvent<HTMLButtonElement>) => { props.handleSubmit() }}>Submit</Button>
+        <Button fullWidth={true} variant="contained" color="primary" size="large" onClick={(event: React.MouseEvent<HTMLButtonElement>) => { props.handleSubmit() }}>Submit</Button>
       </div>
 );
