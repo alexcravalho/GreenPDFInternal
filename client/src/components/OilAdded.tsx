@@ -21,7 +21,7 @@ export class OilAdded extends Component<{}, OilAddedState> {
         <FormGroup className="oil-added" row>
           <FormLabel className="label" style={{color: 'black', lineHeight: '2.5'}}>Oil Added: </FormLabel>
           {this.state.options.map((option, idx) => (
-            <LabledCheckbox key={idx} label={option}/>
+            <LabledCheckbox key={idx} label={option} text="Oil Added"/>
           ))}
         </FormGroup>
       </div>

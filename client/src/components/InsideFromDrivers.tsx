@@ -37,7 +37,7 @@ export class InsideFromDrivers extends Component<{}, InsideFromDriversState> {
       <div className="inside-from-drivers">
         <h3>Inside from Drivers seat or Certified Helper</h3>
         {this.state.labels1.map((label, idx) => (
-          <LabledCheckbox key={idx} label={label}/>
+          <LabledCheckbox key={idx} label={label} text=""/>
         ))}
         <FormGroup row>
           <FormLabel className="label" style={{color: 'black', lineHeight: '4'}}>Last Service Date: </FormLabel>
@@ -48,7 +48,7 @@ export class InsideFromDrivers extends Component<{}, InsideFromDriversState> {
           <TextField label="MM/DD/YYYY" />
         </FormGroup>
         {this.state.labels2.map((label, idx) => (
-          <LabledCheckbox key={idx} label={label}/>
+          <LabledCheckbox key={idx} label={label} text=""/>
         ))}
       </div>
     )

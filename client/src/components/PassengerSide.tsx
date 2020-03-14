@@ -48,7 +48,7 @@ export class PassengerSide extends Component<{}, PassengerSideState> {
           <TextField label="MM/DD/YYYY" />
         </FormGroup>
         {this.state.labels1.map((label, idx) => (
-          <LabledCheckbox key={idx} label={label}/>
+          <LabledCheckbox key={idx} label={label} text=""/>
         ))}
         <FormGroup row>
           <FormLabel style={{ color: 'black' }}>Product setting: </FormLabel>
@@ -56,12 +56,12 @@ export class PassengerSide extends Component<{}, PassengerSideState> {
           <FormLabel style={{ color: 'black' }}>(default to 2)</FormLabel>
         </FormGroup>
         {this.state.labels2.map((label, idx) => (
-          <LabledCheckbox key={idx} label={label}/>
+          <LabledCheckbox key={idx} label={label} text=""/>
         ))}
         <FormGroup row>
           <FormLabel style={{color: 'black'}}>Truck tarp: </FormLabel>
           {this.state.options.map((option, idx) => (
-            <LabledCheckbox key={idx} label={option}/>
+            <LabledCheckbox key={idx} label={option} text="Truck tarp"/>
           ))}
         </FormGroup>
       </div>

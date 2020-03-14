@@ -27,7 +27,7 @@ export class BeforeStartup extends Component<{}, StartupState> {
       <div className="before-startup">
         <h3>Before Start up Driver or Certified Helper</h3>
         {this.state.labels.map((label, idx) => (
-          <LabledCheckbox key={idx} label={label}/>
+          <LabledCheckbox key={idx} label={label} text=''/>
         ))}
         <OilAdded />
         <Coolant />

@@ -34,7 +34,7 @@ export class OutsideDriver extends Component<{}, OutsideDriverState> {
       <div className="outisde-driver">
         <h3>Outside Driver only</h3>
         {this.state.labels1.map((label, idx) => (
-          <LabledCheckbox key={idx} label={label}/>
+          <LabledCheckbox key={idx} label={label} text=""/>
         ))}
         <FormGroup row>
           <FormLabel className="label" style={{color: 'black', lineHeight: '4'}}>Blower Filter clean date: </FormLabel>
@@ -45,7 +45,7 @@ export class OutsideDriver extends Component<{}, OutsideDriverState> {
           <TextField label="MM/DD/YYYY" />
         </FormGroup>
         {this.state.labels2.map((label, idx) => (
-          <LabledCheckbox key={idx} label={label}/>
+          <LabledCheckbox key={idx} label={label} text=""/>
         ))}
       </div>
     )

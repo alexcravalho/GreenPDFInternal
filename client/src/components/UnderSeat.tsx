@@ -28,7 +28,7 @@ export class UnderSeat extends Component<{}, UnderSeatState> {
       <div className="under-seat">
         <h3>Under seat</h3>
         {this.state.labels.map((label, idx) => (
-          <LabledCheckbox key={idx} label={label}/>
+          <LabledCheckbox key={idx} label={label} text=""/>
         ))}
       </div>
     )

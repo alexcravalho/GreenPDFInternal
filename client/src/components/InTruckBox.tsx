@@ -26,7 +26,7 @@ export class InTruckBox extends Component<{}, InTruckBoxState> {
       <div className="in-truck-box">
         <h3>In Truck Box</h3>
         {this.state.labels.map((label, idx) => (
-          <LabledCheckbox key={idx} label={label}/>
+          <LabledCheckbox key={idx} label={label} text=""/>
         ))}
       </div>
     )
