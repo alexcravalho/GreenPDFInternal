@@ -3,6 +3,12 @@
   flex-direction: column;
 }
 
+.submit {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .column-container {
   display: flex;
   flex-direction: row;
