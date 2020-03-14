@@ -10,8 +10,15 @@ import { Back } from './Back';
 import { InTruckBox } from './InTruckBox';
 import { PassengerSide } from './PassengerSide';
 import { SubmitButton } from './SubmitButton';
+import '../dist/styles.css';
 
-const ref = React.createRef<HTMLDivElement>();
+// const ref = React.createRef<HTMLDivElement>();
+// const options = {
+//   orientation: 'p',
+//   unit: 'in',
+//   format: [875, 1670],
+//   compress: true
+// }
 
 interface AppState {
   'Truck: ': string,
@@ -80,13 +87,9 @@ export class Form extends Component<{}, AppState> {
   }
 
   render() {
-    const path = `/home/acrav/ArdvarkBarkInternal/${this.handleSubmit()}`;
     return (
       <div className="full-form">
-      <Pdf targetRef={ref} filename="code-example.pdf">
-        {({ toPdf }:any) => <button onClick={toPdf}>Generate Pdf</button>}
-      </Pdf>
-        <div ref={ref} className="column-container">
+        <div className="column-container">
             <div className="form-left-column">
               <BeforeStartup />
               <InsideFromDrivers />
