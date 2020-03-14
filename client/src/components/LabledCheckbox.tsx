@@ -9,7 +9,8 @@ interface LabledCheckboxState {
 }
 
 interface LabledCheckboxProps {
-  label: string
+  label: string,
+  text: string
 }
 
 const BlueCheckbox = withStyles({
@@ -30,18 +31,37 @@ export class LabledCheckbox extends Component<LabledCheckboxProps, LabledCheckbo
       checked: false
     }
     this.handleChange = this.handleChange.bind(this);
+    // this.classParser = this.classParser.bind(this);
   }
 
   handleChange = (name: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({ ...this.state, [name]: event.target.checked });
   };
 
+  classParser = (s: string) => {
+    s = s.toLowerCase();
+    if (this.props.text !== "") {
+      s = s + '-' + this.props.text.toLowerCase();
+    }
+    if (s.includes(' ')) {
+      s = s.split(' ').join('');
+    }
+    if (s.includes('/')) {
+      s = s.split('/').join('-')
+    }
+    return s;
+  }
+
   render() {
     return (
       <div className="checkbox-row">
           <FormControlLabel
           control={
-            <BlueCheckbox checked={this.state.checked} onChange={this.handleChange('checked')} value="checked" />
+            <BlueCheckbox
+              className={this.classParser(this.props.label)}
+              checked={this.state.checked}
+              onChange={this.handleChange('checked')}
+              value="checked" />
           }
           label={this.props.label}
         />
