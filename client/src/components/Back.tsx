@@ -33,23 +33,23 @@ export class Back extends Component<{}, BackState> {
       <div className="back">
         <h3>Back</h3>
         {this.state.labels1.map((label, idx) => (
-          <LabledCheckbox key={idx} label={label}/>
+          <LabledCheckbox key={idx} label={label} text=""/>
         ))}
         <FormGroup row>
           <FormLabel style={{ color: 'black' }}>license plate tabs expire: </FormLabel>
           <TextField label="MM/DD/YYYY" />
         </FormGroup>
         {this.state.labels2.map((label, idx) => (
-          <LabledCheckbox key={idx} label={label}/>
+          <LabledCheckbox key={idx} label={label} text=""/>
         ))}
         <FormGroup row>
           <FormLabel style={{ color: 'black' }}>Empty or preloaded with: </FormLabel>
           <TextField />
         </FormGroup>
         <FormGroup row>
-          <FormLabel style={{color: 'black'}}>Box bars straight </FormLabel>
+          <FormLabel style={{color: 'black'}}>Box bars straight: </FormLabel>
           {this.state.options.map((option, idx) => (
-            <LabledCheckbox key={idx} label={option}/>
+            <LabledCheckbox key={idx} label={option} text="Box bars straight"/>
           ))}
         </FormGroup>
       </div>
