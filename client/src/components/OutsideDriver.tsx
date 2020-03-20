@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 import { TextField, FormLabel, FormGroup } from '@material-ui/core';
 import { LabledCheckbox } from './LabledCheckbox';
 
+interface OutsideDriverProps {
+  appStateChange: any,
+  filter: string,
+  coupler: string
+}
+
 interface OutsideDriverState {
   labels1: string[],
   labels2: string[]
 }
 
-export class OutsideDriver extends Component<{}, OutsideDriverState> {
-  constructor(props: {}) {
+export class OutsideDriver extends Component<OutsideDriverProps, OutsideDriverState> {
+  constructor(props: OutsideDriverProps) {
     super(props);
 
     this.state = {
@@ -38,11 +44,11 @@ export class OutsideDriver extends Component<{}, OutsideDriverState> {
         ))}
         <FormGroup row>
           <FormLabel className="label" style={{color: 'black', lineHeight: '4'}}>Blower Filter clean date: </FormLabel>
-          <TextField label="MM/DD/YYYY" />
+          <TextField className="filter" label="MM/DD/YYYY" value={this.props.filter} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(event, 'filter')}} />
         </FormGroup>
         <FormGroup row>
           <FormLabel className="label" style={{color: 'black', lineHeight: '4'}}>Blower coupler lube date: </FormLabel>
-          <TextField label="MM/DD/YYYY" />
+          <TextField className="coupler" label="MM/DD/YYYY" value={this.props.coupler} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(event, 'coupler')}} />
         </FormGroup>
         {this.state.labels2.map((label, idx) => (
           <LabledCheckbox key={idx} label={label} text=""/>
