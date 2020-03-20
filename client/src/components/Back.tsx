@@ -2,14 +2,20 @@ import React, { Component } from 'react';
 import { TextField, FormLabel, FormGroup } from '@material-ui/core';
 import { LabledCheckbox } from './LabledCheckbox';
 
+interface BackProps {
+  appStateChange: any,
+  tabs: string,
+  pre: string
+}
+
 interface BackState {
   labels1: string[],
   labels2: string[],
   options: string[]
 }
 
-export class Back extends Component<{}, BackState> {
-  constructor(props: {}) {
+export class Back extends Component<BackProps, BackState> {
+  constructor(props: BackProps) {
     super(props);
 
     this.state = {
@@ -36,18 +42,18 @@ export class Back extends Component<{}, BackState> {
           <LabledCheckbox key={idx} label={label} text=""/>
         ))}
         <FormGroup row>
-          <FormLabel style={{ color: 'black' }}>license plate tabs expire: </FormLabel>
-          <TextField label="MM/DD/YYYY" />
+          <FormLabel className="label" style={{color: 'black', lineHeight: '4'}}>License plate tabs expire: </FormLabel>
+          <TextField className="tabs" label="MM/DD/YYYY" value={this.props.tabs} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(event, 'tabs')}} />
         </FormGroup>
         {this.state.labels2.map((label, idx) => (
           <LabledCheckbox key={idx} label={label} text=""/>
         ))}
         <FormGroup row>
-          <FormLabel style={{ color: 'black' }}>Empty or preloaded with: </FormLabel>
-          <TextField />
+          <FormLabel className="label" style={{color: 'black', lineHeight: '2.5'}}>Empty or preloaded with: </FormLabel>
+          <TextField className="pre" value={this.props.pre} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(event, 'pre')}} />
         </FormGroup>
         <FormGroup row>
-          <FormLabel style={{color: 'black'}}>Box bars straight: </FormLabel>
+          <FormLabel className="label" style={{color: 'black', lineHeight: '2.5'}}>Box bars straight: </FormLabel>
           {this.state.options.map((option, idx) => (
             <LabledCheckbox key={idx} label={option} text="Box bars straight"/>
           ))}
