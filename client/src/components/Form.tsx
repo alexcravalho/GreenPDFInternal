@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Pdf from "react-to-pdf";
 import axios from 'axios';
 import { BeforeStartup } from './BeforeStartup';
 import { InsideFromDrivers } from './InsideFromDrivers';
@@ -12,19 +11,20 @@ import { PassengerSide } from './PassengerSide';
 import { SubmitButton } from './SubmitButton';
 import '../dist/styles.css';
 
-// const ref = React.createRef<HTMLDivElement>();
-// const options = {
-//   orientation: 'p',
-//   unit: 'in',
-//   format: [875, 1670],
-//   compress: true
-// }
-
 interface AppState {
-  'Truck: ': string,
-  'Driver: ': string,
-  'Helper: ': string,
-  'Date: ': string
+  truck: string,
+  driver: string,
+  helper: string,
+  date: string,
+  notes: string,
+  lsd: string,
+  ins: string,
+  filter: string,
+  coupler: string,
+  tabs: string,
+  pre: string,
+  lube: string,
+  product: string
 }
 
 export class Form extends Component<{}, AppState> {
@@ -32,42 +32,56 @@ export class Form extends Component<{}, AppState> {
     super(props);
 
     this.state = {
-      'Truck: ': '',
-      'Driver: ': '',
-      'Helper: ': '',
-      'Date: ': ''
+      truck: '',
+      driver: '',
+      helper: '',
+      date: '',
+      notes: '',
+      lsd: '',
+      ins: '',
+      filter: '',
+      coupler: '',
+      tabs: '',
+      pre: '',
+      lube: '',
+      product: ''
     }
     this.appStateChange = this.appStateChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
-    // printForm = document.getElementById('app');
-  }
-
-  appStateChange = (name:string, value:string) => {
-    this.setState({...this.state, [name]: value });
+  appStateChange = (event: React.ChangeEvent<HTMLInputElement>, name:string) => {
+    this.setState({...this.state, [name]: event.target.value });
   };
 
-  handleSubmit = () => {
-    const createdName = this.createFileName(this.state['Truck: '], this.state['Driver: '], this.state['Date: ']);
+  // onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   this.setState({...this.state, [name]: event.target.value })
+  // }
 
-    // html2canvas(printForm)
-    //   .then((canvas) => {
-    //     const imgData = canvas.toDataURL('image/png');
-    //     console.log(imgData)
-    //     const pdf = new jsPDF();
-    //     pdf.addImage(imgData, 'PNG', 0, 0);
-    //     pdf.save(createdName);
-    //     console.log('pdf created')
-
-    //     axios.post('/pdf', {
-    //       image: formImage,
-    //       fileName: createdName
-    //     })
-    //     .then((response) => { console.log(response) })
-    //     .catch((err) => { console.log(err) })
-    //   });
+  handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const createdName = this.createFileName(this.state.truck, this.state.driver, this.state.date);
+    let s = this.state;
+    let data = {
+      createdName: createdName,
+      inputs: {
+        '.truck': s.truck,
+        '.driver': s.driver,
+        '.helper': s.helper,
+        '.date': s.date,
+        '.notes': s.notes,
+        '.lsd': s.lsd,
+        '.ins': s.ins,
+        '.filter': s.filter,
+        '.coupler': s.coupler,
+        '.tabs': s.tabs,
+        '.pre': s.pre,
+        '.lube': s.lube,
+        '.product': s.product
+      }
+    };
+    axios.post('/pdf', data)
+      .then(res => { console.log(res) })
+      .catch(err => { console.log(err) })
   };
 
   createFileName = (t: string, dr: string, da: string) => {
@@ -91,16 +105,16 @@ export class Form extends Component<{}, AppState> {
       <div className="full-form">
         <div className="column-container">
             <div className="form-left-column">
-              <BeforeStartup />
-              <InsideFromDrivers />
+              <BeforeStartup notes={this.state.notes} appStateChange={this.appStateChange}/>
+              <InsideFromDrivers lsd={this.state.lsd} ins={this.state.ins} appStateChange={this.appStateChange} />
               <UnderSeat />
-              <OutsideDriver />
+              <OutsideDriver filter={this.state.filter} coupler={this.state.coupler} appStateChange={this.appStateChange} />
             </div>
             <div className="form-right-column">
-              <TruckDriver appStateChange={this.appStateChange}/>
-              <Back />
+              <TruckDriver truck={this.state.truck} driver={this.state.driver} date={this.state.date} appStateChange={this.appStateChange}/>
+              <Back tabs={this.state.tabs} pre={this.state.pre} appStateChange={this.appStateChange}/>
               <InTruckBox />
-              <PassengerSide />
+              <PassengerSide lube={this.state.lube} product={this.state.product} appStateChange={this.appStateChange}/>
             </div>
         </div>
         <div className="submission">
