@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 import { TextField, FormLabel, FormGroup } from '@material-ui/core';
 import { LabledCheckbox } from './LabledCheckbox';
 
+interface InsideFromDriversProps {
+  appStateChange: any,
+  lsd: string,
+  ins: string
+}
+
 interface InsideFromDriversState {
   labels1: string[],
   labels2: string[]
 }
 
-export class InsideFromDrivers extends Component<{}, InsideFromDriversState> {
-  constructor(props: {}) {
+export class InsideFromDrivers extends Component<InsideFromDriversProps, InsideFromDriversState> {
+  constructor(props: InsideFromDriversProps) {
     super(props);
 
     this.state = {
@@ -41,11 +47,11 @@ export class InsideFromDrivers extends Component<{}, InsideFromDriversState> {
         ))}
         <FormGroup row>
           <FormLabel className="label" style={{color: 'black', lineHeight: '4'}}>Last Service Date: </FormLabel>
-          <TextField label="MM/DD/YYYY" />
+          <TextField className="lsd" label="MM/DD/YYYY" value={this.props.lsd} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(event, 'lsd')}} />
         </FormGroup>
         <FormGroup row>
           <FormLabel className="label" style={{color: 'black', lineHeight: '4'}}>Insurance / Registration Expires: </FormLabel>
-          <TextField label="MM/DD/YYYY" />
+          <TextField className="ins" label="MM/DD/YYYY" value={this.props.ins} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(event, 'ins')}} />
         </FormGroup>
         {this.state.labels2.map((label, idx) => (
           <LabledCheckbox key={idx} label={label} text=""/>
