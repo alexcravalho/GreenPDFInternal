@@ -1,45 +1,34 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { FormLabel, FormGroup, TextField } from '@material-ui/core';
 
-interface TruckDriverState {
-  labels1: string[],
-  labels2: string[]
-}
-
 interface TruckDriverProps {
-  appStateChange: any
+  appStateChange: any,
+  truck: string,
+  driver: string,
+  date: string
 }
 
-export class TruckDriver extends Component<TruckDriverProps, TruckDriverState> {
-  constructor(props: TruckDriverProps) {
-    super(props);
-
-    this.state = {
-      labels1: ['Truck: ', 'Driver: '],
-      labels2: ['Helper: ', 'Date: ']
-    }
-  }
-
-  render() {
-    return (
+export const TruckDriver = (props: TruckDriverProps) => (
       <div className="truck-driver">
         <FormGroup row>
-          {this.state.labels1.map((label, idx) => (
-            <div key={idx}>
-              <FormLabel style={{ color: 'black', fontSize: 24, fontWeight: 500 }}>{ label }</FormLabel>
-              <TextField onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(label, event.target.value)}} />
+            <div className="truck-label">
+              <FormLabel style={{ color: 'black', fontSize: 24, fontWeight: 500, lineHeight: '1.2' }}>Truck: </FormLabel>
+              <TextField className="truck" value={props.truck} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {props.appStateChange(event, 'truck')}} />
             </div>
-          ))}
+            <div className="truck-label">
+              <FormLabel style={{ color: 'black', fontSize: 24, fontWeight: 500, lineHeight: '1.2' }}>Driver: </FormLabel>
+              <TextField className="driver" value={props.driver} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {props.appStateChange(event, 'driver')}} />
+            </div>
         </FormGroup>
         <FormGroup row>
-          {this.state.labels2.map((label, idx) => (
-            <div key={idx}>
-              <FormLabel style={{ color: 'black', fontSize: 24, fontWeight: 500 }}>{ label }</FormLabel>
-              <TextField onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(label, event.target.value)}} />
+            <div className="truck-label">
+              <FormLabel style={{ color: 'black', fontSize: 24, fontWeight: 500, lineHeight: '1.2' }}>Helper: </FormLabel>
+              <TextField className="helper" onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {props.appStateChange(event, 'helper')}}/>
             </div>
-          ))}
+            <div>
+              <FormLabel style={{ color: 'black', fontSize: 24, fontWeight: 500, lineHeight: '2.5' }}>Date: </FormLabel>
+              <TextField className="date"label="MM/DD/YYYY" onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {props.appStateChange(event, 'date')}} />
+            </div>
         </FormGroup>
       </div>
-    )
-  }
-};
+    );
