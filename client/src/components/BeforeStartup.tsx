@@ -5,12 +5,17 @@ import { OilAdded } from './OilAdded';
 import { Coolant } from './Coolant';
 import { PowerSteering } from './PowerSteering';
 
+interface StartupProps {
+  appStateChange: any,
+  notes: string
+}
+
 interface StartupState {
   labels: string[]
 }
 
-export class BeforeStartup extends Component<{}, StartupState> {
-  constructor(props: {}) {
+export class BeforeStartup extends Component<StartupProps, StartupState> {
+  constructor(props: StartupProps) {
     super(props);
 
     this.state = {
@@ -32,9 +37,9 @@ export class BeforeStartup extends Component<{}, StartupState> {
         <OilAdded />
         <Coolant />
         <PowerSteering />
-        <FormGroup className="notes" row>
+        <FormGroup className="notes-group" row>
           <FormLabel className="label" style={{ color: 'black' }}>Notes: </FormLabel>
-          <TextField multiline rows="5" variant="outlined" />
+          <TextField className="notes" multiline rows="5" variant="outlined" value={this.props.notes} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(event, 'notes')}} />
         </FormGroup>
       </div>
     )
