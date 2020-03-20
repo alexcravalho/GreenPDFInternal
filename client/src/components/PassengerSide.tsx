@@ -2,14 +2,20 @@ import React, { Component } from 'react';
 import { TextField, FormLabel, FormGroup } from '@material-ui/core';
 import { LabledCheckbox } from './LabledCheckbox';
 
+interface PassengerSideProps {
+  appStateChange: any,
+  lube: string,
+  product: string
+}
+
 interface PassengerSideState {
   labels1: string[],
   labels2: string[],
   options: string[]
 }
 
-export class PassengerSide extends Component<{}, PassengerSideState> {
-  constructor(props: {}) {
+export class PassengerSide extends Component<PassengerSideProps, PassengerSideState> {
+  constructor(props: PassengerSideProps) {
     super(props);
 
     this.state = {
@@ -44,22 +50,22 @@ export class PassengerSide extends Component<{}, PassengerSideState> {
       <div className="passenger-side">
         <h3>Passenger Side</h3>
         <FormGroup row>
-          <FormLabel style={{ color: 'black' }}>Lube system purge/fill date: </FormLabel>
-          <TextField label="MM/DD/YYYY" />
+          <FormLabel className="label" style={{color: 'black', lineHeight: '4'}}>Lube system purge/fill date: </FormLabel>
+          <TextField className="lube" label="MM/DD/YYYY" value={this.props.lube} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(event, 'lube')}} />
         </FormGroup>
         {this.state.labels1.map((label, idx) => (
           <LabledCheckbox key={idx} label={label} text=""/>
         ))}
         <FormGroup row>
-          <FormLabel style={{ color: 'black' }}>Product setting: </FormLabel>
-          <TextField/>
-          <FormLabel style={{ color: 'black' }}>(default to 2)</FormLabel>
+          <FormLabel className="label" style={{color: 'black', lineHeight: '2.5'}}>Product setting: </FormLabel>
+          <TextField className="product" value={this.props.product} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(event, 'product')}} />
+          <FormLabel className="default-two" style={{color: 'black', lineHeight: '2.5'}}>(default to 2)</FormLabel>
         </FormGroup>
         {this.state.labels2.map((label, idx) => (
           <LabledCheckbox key={idx} label={label} text=""/>
         ))}
         <FormGroup row>
-          <FormLabel style={{color: 'black'}}>Truck tarp: </FormLabel>
+          <FormLabel className="label" style={{color: 'black', lineHeight: '2.5'}}>Truck tarp: </FormLabel>
           {this.state.options.map((option, idx) => (
             <LabledCheckbox key={idx} label={option} text="Truck tarp"/>
           ))}
