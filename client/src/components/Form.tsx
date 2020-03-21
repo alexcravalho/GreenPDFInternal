@@ -12,6 +12,7 @@ import { SubmitButton } from './SubmitButton';
 import '../dist/styles.css';
 
 interface AppState {
+
   truck: string,
   driver: string,
   helper: string,
@@ -54,14 +55,14 @@ export class Form extends Component<{}, AppState> {
     this.setState({...this.state, [name]: event.target.value });
   };
 
-  // onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   this.setState({...this.state, [name]: event.target.value })
-  // }
+  appStateHandleCheck = (event: React.ChangeEvent<HTMLInputElement>, name:string) => {
+    this.setState({...this.state, [name]: event.target.checked});
+  };
 
-  handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
+  handleSubmit = () => {
     const createdName = this.createFileName(this.state.truck, this.state.driver, this.state.date);
-    let s = this.state;
-    let data = {
+    const s = this.state;
+    const data = {
       createdName: createdName,
       inputs: {
         '.truck': s.truck,
@@ -77,8 +78,16 @@ export class Form extends Component<{}, AppState> {
         '.pre': s.pre,
         '.lube': s.lube,
         '.product': s.product
-      }
+      },
+      checkboxes: {}
     };
+    for (var key in s) {
+      if (typeof s[key] === 'boolean') {
+        let newKey = '.' + key
+        data.checkboxes[newKey] = s[key]
+      }
+    }
+
     axios.post('/pdf', data)
       .then(res => { console.log(res) })
       .catch(err => { console.log(err) })
@@ -105,16 +114,16 @@ export class Form extends Component<{}, AppState> {
       <div className="full-form">
         <div className="column-container">
             <div className="form-left-column">
-              <BeforeStartup notes={this.state.notes} appStateChange={this.appStateChange}/>
-              <InsideFromDrivers lsd={this.state.lsd} ins={this.state.ins} appStateChange={this.appStateChange} />
-              <UnderSeat />
-              <OutsideDriver filter={this.state.filter} coupler={this.state.coupler} appStateChange={this.appStateChange} />
+              <BeforeStartup notes={this.state.notes} appStateChange={this.appStateChange} appStateHandleCheck={this.appStateHandleCheck}/>
+              <InsideFromDrivers lsd={this.state.lsd} ins={this.state.ins} appStateChange={this.appStateChange} appStateHandleCheck={this.appStateHandleCheck}/>
+              <UnderSeat appStateHandleCheck={this.appStateHandleCheck}/>
+              <OutsideDriver filter={this.state.filter} coupler={this.state.coupler} appStateChange={this.appStateChange} appStateHandleCheck={this.appStateHandleCheck} />
             </div>
             <div className="form-right-column">
               <TruckDriver truck={this.state.truck} driver={this.state.driver} date={this.state.date} appStateChange={this.appStateChange}/>
-              <Back tabs={this.state.tabs} pre={this.state.pre} appStateChange={this.appStateChange}/>
-              <InTruckBox />
-              <PassengerSide lube={this.state.lube} product={this.state.product} appStateChange={this.appStateChange}/>
+              <Back tabs={this.state.tabs} pre={this.state.pre} appStateChange={this.appStateChange} appStateHandleCheck={this.appStateHandleCheck}/>
+              <InTruckBox appStateHandleCheck={this.appStateHandleCheck}/>
+              <PassengerSide lube={this.state.lube} product={this.state.product} appStateChange={this.appStateChange} appStateHandleCheck={this.appStateHandleCheck}/>
             </div>
         </div>
         <div className="submission">
