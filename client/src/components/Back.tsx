@@ -4,6 +4,7 @@ import { LabledCheckbox } from './LabledCheckbox';
 
 interface BackProps {
   appStateChange: any,
+  appStateHandleCheck: any,
   tabs: string,
   pre: string
 }
@@ -39,23 +40,23 @@ export class Back extends Component<BackProps, BackState> {
       <div className="back">
         <h3>Back</h3>
         {this.state.labels1.map((label, idx) => (
-          <LabledCheckbox key={idx} label={label} text=""/>
+          <LabledCheckbox key={idx} idx={idx} label={label} text="" appStateHandleCheck={this.props.appStateHandleCheck}/>
         ))}
         <FormGroup row>
           <FormLabel className="label" style={{color: 'black', lineHeight: '4'}}>License plate tabs expire: </FormLabel>
           <TextField className="tabs" label="MM/DD/YYYY" value={this.props.tabs} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(event, 'tabs')}} />
         </FormGroup>
         {this.state.labels2.map((label, idx) => (
-          <LabledCheckbox key={idx} label={label} text=""/>
+          <LabledCheckbox key={idx} idx={idx} label={label} text="" appStateHandleCheck={this.props.appStateHandleCheck}/>
         ))}
         <FormGroup row>
-          <FormLabel className="label" style={{color: 'black', lineHeight: '2.5'}}>Empty or preloaded with: </FormLabel>
+          <FormLabel className="label" style={{color: 'black', lineHeight: '2'}}>Empty or preloaded with: </FormLabel>
           <TextField className="pre" value={this.props.pre} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(event, 'pre')}} />
         </FormGroup>
         <FormGroup row>
           <FormLabel className="label" style={{color: 'black', lineHeight: '2.5'}}>Box bars straight: </FormLabel>
           {this.state.options.map((option, idx) => (
-            <LabledCheckbox key={idx} label={option} text="Box bars straight"/>
+            <LabledCheckbox key={idx} idx={idx} label={option} text="Box bars straight" appStateHandleCheck={this.props.appStateHandleCheck}/>
           ))}
         </FormGroup>
       </div>
