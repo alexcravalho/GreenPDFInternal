@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import { TextField, FormLabel, FormGroup } from '@material-ui/core';
 import { LabledCheckbox } from './LabledCheckbox';
+
+interface UnderSeatProps {
+  appStateHandleCheck: any
+}
 
 interface UnderSeatState {
   labels: string[]
 }
 
-export class UnderSeat extends Component<{}, UnderSeatState> {
-  constructor(props: {}) {
+export class UnderSeat extends Component<UnderSeatProps, UnderSeatState> {
+  constructor(props: UnderSeatProps) {
     super(props);
 
     this.state = {
@@ -28,7 +31,7 @@ export class UnderSeat extends Component<{}, UnderSeatState> {
       <div className="under-seat">
         <h3>Under seat</h3>
         {this.state.labels.map((label, idx) => (
-          <LabledCheckbox key={idx} label={label} text=""/>
+          <LabledCheckbox key={idx} idx={idx} label={label} text="" appStateHandleCheck={this.props.appStateHandleCheck}/>
         ))}
       </div>
     )
