@@ -4,6 +4,7 @@ import { LabledCheckbox } from './LabledCheckbox';
 
 interface PassengerSideProps {
   appStateChange: any,
+  appStateHandleCheck: any,
   lube: string,
   product: string
 }
@@ -30,8 +31,8 @@ export class PassengerSide extends Component<PassengerSideProps, PassengerSideSt
       labels2: [
         "Mud flap & Box spring",
         "Drop tire kich check for cuts flat spots & caps",
-        "Shovel",
         "Tarp clamp",
+        "Shovel",
         "Drive tire kick check for cuts & caps",
         "Side light Box spring Mud flap",
         "Battery cover latched",
@@ -54,20 +55,20 @@ export class PassengerSide extends Component<PassengerSideProps, PassengerSideSt
           <TextField className="lube" label="MM/DD/YYYY" value={this.props.lube} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(event, 'lube')}} />
         </FormGroup>
         {this.state.labels1.map((label, idx) => (
-          <LabledCheckbox key={idx} label={label} text=""/>
+          <LabledCheckbox key={idx} idx={idx} label={label} text="" appStateHandleCheck={this.props.appStateHandleCheck}/>
         ))}
         <FormGroup row>
-          <FormLabel className="label" style={{color: 'black', lineHeight: '2.5'}}>Product setting: </FormLabel>
+          <FormLabel className="label" style={{color: 'black', lineHeight: '2'}}>Product setting: </FormLabel>
           <TextField className="product" value={this.props.product} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(event, 'product')}} />
-          <FormLabel className="default-two" style={{color: 'black', lineHeight: '2.5'}}>(default to 2)</FormLabel>
+          <FormLabel className="default-two" style={{color: 'black', lineHeight: '2'}}>(default to 2)</FormLabel>
         </FormGroup>
         {this.state.labels2.map((label, idx) => (
-          <LabledCheckbox key={idx} label={label} text=""/>
+          <LabledCheckbox key={idx} idx={idx} label={label} text="" appStateHandleCheck={this.props.appStateHandleCheck}/>
         ))}
         <FormGroup row>
           <FormLabel className="label" style={{color: 'black', lineHeight: '2.5'}}>Truck tarp: </FormLabel>
           {this.state.options.map((option, idx) => (
-            <LabledCheckbox key={idx} label={option} text="Truck tarp"/>
+            <LabledCheckbox key={idx} idx={idx} label={option} text="Truck tarp" appStateHandleCheck={this.props.appStateHandleCheck}/>
           ))}
         </FormGroup>
       </div>
