@@ -4,6 +4,7 @@ import { LabledCheckbox } from './LabledCheckbox';
 
 interface InsideFromDriversProps {
   appStateChange: any,
+  appStateHandleCheck: any,
   lsd: string,
   ins: string
 }
@@ -43,7 +44,7 @@ export class InsideFromDrivers extends Component<InsideFromDriversProps, InsideF
       <div className="inside-from-drivers">
         <h3>Inside from Drivers seat or Certified Helper</h3>
         {this.state.labels1.map((label, idx) => (
-          <LabledCheckbox key={idx} label={label} text=""/>
+          <LabledCheckbox key={idx} idx={idx} label={label} text="" appStateHandleCheck={this.props.appStateHandleCheck}/>
         ))}
         <FormGroup row>
           <FormLabel className="label" style={{color: 'black', lineHeight: '4'}}>Last Service Date: </FormLabel>
@@ -54,7 +55,7 @@ export class InsideFromDrivers extends Component<InsideFromDriversProps, InsideF
           <TextField className="ins" label="MM/DD/YYYY" value={this.props.ins} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(event, 'ins')}} />
         </FormGroup>
         {this.state.labels2.map((label, idx) => (
-          <LabledCheckbox key={idx} label={label} text=""/>
+          <LabledCheckbox key={idx} idx={idx} label={label} text="" appStateHandleCheck={this.props.appStateHandleCheck}/>
         ))}
       </div>
     )
