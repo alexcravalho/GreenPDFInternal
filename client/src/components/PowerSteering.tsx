@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import { FormLabel, FormGroup } from '@material-ui/core';
 import { LabledCheckbox } from './LabledCheckbox';
 
+interface PowerSteeringProps {
+  appStateHandleCheck: any
+}
+
 interface PowerSteeringState {
   options: string[]
 }
 
-export class PowerSteering extends Component<{}, PowerSteeringState> {
-  constructor(props: {}) {
+export class PowerSteering extends Component<PowerSteeringProps, PowerSteeringState> {
+  constructor(props: PowerSteeringProps) {
     super(props);
 
     this.state = {
@@ -21,7 +25,7 @@ export class PowerSteering extends Component<{}, PowerSteeringState> {
         <FormGroup row>
           <FormLabel className="label" style={{color: 'black', lineHeight: '2.5'}}>Power Steering Added: </FormLabel>
           {this.state.options.map((option, idx) => (
-            <LabledCheckbox key={idx} label={option} text="Power Steering"/>
+            <LabledCheckbox key={idx} idx={idx} label={option} text="Power Steering" appStateHandleCheck={this.props.appStateHandleCheck}/>
           ))}
         </FormGroup>
       </div>
