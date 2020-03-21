@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { LabledCheckbox } from './LabledCheckbox';
 
+interface InTruckBoxProps {
+  appStateHandleCheck: any
+}
+
 interface InTruckBoxState {
   labels: string[]
 }
 
-export class InTruckBox extends Component<{}, InTruckBoxState> {
-  constructor(props: {}) {
+export class InTruckBox extends Component<InTruckBoxProps, InTruckBoxState> {
+  constructor(props: InTruckBoxProps) {
     super(props);
 
     this.state = {
@@ -26,7 +30,7 @@ export class InTruckBox extends Component<{}, InTruckBoxState> {
       <div className="in-truck-box">
         <h3>In Truck Box</h3>
         {this.state.labels.map((label, idx) => (
-          <LabledCheckbox key={idx} label={label} text=""/>
+          <LabledCheckbox key={idx} idx={idx} label={label} text="" appStateHandleCheck={this.props.appStateHandleCheck}/>
         ))}
       </div>
     )
