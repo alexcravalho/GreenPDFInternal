@@ -4,6 +4,7 @@ import { LabledCheckbox } from './LabledCheckbox';
 
 interface OutsideDriverProps {
   appStateChange: any,
+  appStateHandleCheck: any,
   filter: string,
   coupler: string
 }
@@ -40,7 +41,7 @@ export class OutsideDriver extends Component<OutsideDriverProps, OutsideDriverSt
       <div className="outisde-driver">
         <h3>Outside Driver only</h3>
         {this.state.labels1.map((label, idx) => (
-          <LabledCheckbox key={idx} label={label} text=""/>
+          <LabledCheckbox key={idx} idx={idx} label={label} text="" appStateHandleCheck={this.props.appStateHandleCheck}/>
         ))}
         <FormGroup row>
           <FormLabel className="label" style={{color: 'black', lineHeight: '4'}}>Blower Filter clean date: </FormLabel>
@@ -51,7 +52,7 @@ export class OutsideDriver extends Component<OutsideDriverProps, OutsideDriverSt
           <TextField className="coupler" label="MM/DD/YYYY" value={this.props.coupler} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(event, 'coupler')}} />
         </FormGroup>
         {this.state.labels2.map((label, idx) => (
-          <LabledCheckbox key={idx} label={label} text=""/>
+          <LabledCheckbox key={idx} idx={idx} label={label} text="" appStateHandleCheck={this.props.appStateHandleCheck}/>
         ))}
       </div>
     )
