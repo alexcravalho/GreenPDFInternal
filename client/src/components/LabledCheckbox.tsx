@@ -9,8 +9,10 @@ interface LabledCheckboxState {
 }
 
 interface LabledCheckboxProps {
+  appStateHandleCheck: any,
   label: string,
-  text: string
+  text: string,
+  idx: number
 }
 
 const BlueCheckbox = withStyles({
@@ -31,11 +33,11 @@ export class LabledCheckbox extends Component<LabledCheckboxProps, LabledCheckbo
       checked: false
     }
     this.handleChange = this.handleChange.bind(this);
-    // this.classParser = this.classParser.bind(this);
   }
 
-  handleChange = (name: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
+  handleChange = (name: string, clas: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({ ...this.state, [name]: event.target.checked });
+    this.props.appStateHandleCheck(event, clas)
   };
 
   classParser = (s: string) => {
@@ -43,13 +45,25 @@ export class LabledCheckbox extends Component<LabledCheckboxProps, LabledCheckbo
     if (this.props.text !== "") {
       s = s + '-' + this.props.text.toLowerCase();
     }
+    if (Number.isInteger(Number(s[0]))) {
+      s = s.slice(1);
+    }
     if (s.includes(' ')) {
       s = s.split(' ').join('');
+    }
+    if (s.includes('&')) {
+      s = s.split('&').join('');
+    }
+    if (s.includes(',')) {
+      s = s.split(',').join('');
+    }
+    if (s.includes(':')) {
+      s = s.split(':').join('');
     }
     if (s.includes('/')) {
       s = s.split('/').join('-')
     }
-    return s;
+    return s + this.props.idx;
   }
 
   render() {
@@ -60,7 +74,7 @@ export class LabledCheckbox extends Component<LabledCheckboxProps, LabledCheckbo
             <BlueCheckbox
               className={this.classParser(this.props.label)}
               checked={this.state.checked}
-              onChange={this.handleChange('checked')}
+              onChange={this.handleChange('checked', this.classParser(this.props.label))}
               value="checked" />
           }
           label={this.props.label}
