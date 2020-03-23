@@ -1,6 +1,17 @@
+/* body {
+  background-image: url('logo.png');
+} */
+
 .full-form {
   display: flex;
   flex-direction: column;
+  background-image: url('logo.png');
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: contain; /* Resize the background image to cover the entire container */
+}
+h3 {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
 .submit {
