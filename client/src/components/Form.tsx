@@ -63,7 +63,7 @@ export class Form extends Component<{}, AppState> {
     const createdName = this.createFileName(this.state.truck, this.state.driver, this.state.date);
     const s = this.state;
     const data = {
-      createdName: createdName,
+      createdName,
       inputs: {
         '.truck': s.truck,
         '.driver': s.driver,
@@ -81,16 +81,16 @@ export class Form extends Component<{}, AppState> {
       },
       checkboxes: {}
     };
-    for (var key in s) {
+    for (const key in s) {
       if (typeof s[key] === 'boolean') {
-        let newKey = '.' + key
+        const newKey = '.' + key
         data.checkboxes[newKey] = s[key]
       }
     }
 
     axios.post('/pdf', data)
-      .then(res => { console.log(res) })
-      .catch(err => { console.log(err) })
+      // .then(res => { console.log(res) })
+      // .catch(err => { console.log(err) })
   };
 
   createFileName = (t: string, dr: string, da: string) => {
