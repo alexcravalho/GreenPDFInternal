@@ -12,24 +12,28 @@ app.use(express.static(path.resolve(__dirname, '..', 'client', 'src', 'dist')));
 app.use(cors({ credentials: true, origin: true }));
 
 app.use(express.json({ limit: '100mb'}));
-// app.use(compression());
+app.use(compression());
+
+app.get('/pdf', (req, res) => {
+  res.status(200).send('no get request here')
+})
 
 app.post('/pdf', async (req, res) => {
   // generate the pdf
-    console.log(req.body);
+    console.log('Generating PDF, please wait!');
     await generatePDF(req.body).catch(err => console.log(err));
     console.log('The pdf was created!')
   // send the pdf over nodemailer
-
-
-  // send the completed pdf doc to the specified email
-  // tslint:disable-next-line:no-console
-  // nodemailerSendEmail(req.body).catch((err: any) => { console.log(err) })
-  // // log success if there are no errors
-  // res.status(200).send("nodemailerSent an email to the in mail system")
+    await nodemailerSendEmail(req.body).catch(err => {
+      console.log(err);
+      res.status(500).send(err)
+      console.log("nodemailer had an error sending the email")
+    });
+  // send the completed pdf doc to the specified email & log success if there are no errors
+    res.status(200).send("nodemailer sent an email to the in mail system")
+    console.log("nodemailer sent an email to the in mail system")
 })
 
 app.listen(PORT, () => {
-  // tslint:disable-next-line:no-console
   console.log(`Express server is running on port: ${PORT}`);
 })
