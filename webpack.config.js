@@ -25,11 +25,20 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        exclude: /node_modules/,
+        exclude: [
+          /node_modules/,
+          /logo.jpg/
+        ],
         use: [
           'style-loader',
           'css-loader'
         ]
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader',
+        ],
       },
       // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
       {
