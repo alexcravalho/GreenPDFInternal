@@ -30,14 +30,14 @@ export class PassengerSide extends Component<PassengerSideProps, PassengerSideSt
       ],
       labels2: [
         "Mud flap & Box spring",
-        "Drop tire kich check for cuts flat spots & caps",
+        "Drop tire kick check for cuts flat spots & caps",
         "Tarp clamp",
         "Shovel",
         "Drive tire kick check for cuts & caps",
         "Side light Box spring Mud flap",
         "Battery cover latched",
         "Triangles",
-        "Drive tire kick check for custs & caps",
+        "Drive tire kick check for cuts & caps",
         "Antenna visible and cable secure",
         "Work Light ON",
         "Reverse lights and back up beeper"
