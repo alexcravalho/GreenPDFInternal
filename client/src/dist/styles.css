@@ -1,14 +1,10 @@
-/* body {
-  background-image: url('logo.png');
-} */
-
 .full-form {
   display: flex;
   flex-direction: column;
   background-image: url('logo.png');
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: contain; /* Resize the background image to cover the entire container */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 h3 {
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
