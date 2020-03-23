@@ -39,8 +39,8 @@ export class BeforeStartup extends Component<StartupProps, StartupState> {
         <Coolant appStateHandleCheck={this.props.appStateHandleCheck}/>
         <PowerSteering appStateHandleCheck={this.props.appStateHandleCheck}/>
         <FormGroup className="notes-group" row>
-          <FormLabel className="label" style={{ color: 'black' }}>Notes: </FormLabel>
-          <TextField className="notes" multiline rows="5" variant="outlined" value={this.props.notes} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(event, 'notes')}} />
+          <FormLabel className="label" style={{ color: 'black', marginBottom: '5px' }}>Notes: </FormLabel>
+          <TextField className="notes" multiline rows="5" variant="outlined" fullWidth={true} value={this.props.notes} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(event, 'notes')}} />
         </FormGroup>
       </div>
     )
