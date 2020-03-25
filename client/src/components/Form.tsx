@@ -69,14 +69,16 @@ export class Form extends Component<{}, AppState> {
       inputs: {},
       checkboxes: {}
     };
-    for (let key in s) {
-      if (typeof s[key] === 'boolean') {
-        const newKey = '.' + key
-        data.checkboxes[newKey] = s[key]
-      }
-      if (typeof s[key] === 'string') {
-        const newKey = '.' + key
-        data.inputs[newKey] = s[key]
+    for (const key in s) {
+      if (s.hasOwnProperty(key)) {
+        if (typeof s[key] === 'boolean') {
+          const newKey = '.' + key
+          data.checkboxes[newKey] = s[key]
+        }
+        if (typeof s[key] === 'string') {
+          const newKey = '.' + key
+          data.inputs[newKey] = s[key]
+        }
       }
     }
     axios.post('/pdf', data)
