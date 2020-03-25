@@ -6,6 +6,12 @@
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+h1 {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  color:#ee1d23;
+}
+
 h3 {
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
