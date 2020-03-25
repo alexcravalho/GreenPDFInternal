@@ -1,6 +1,7 @@
 node_modules
 package-lock.json
 /client/src/dist/bundle.js
+/client/src/dist/bundle.js.map
 debouncefunction.js
 /server/emailAuth.js
 client/src/dist/logo.png
