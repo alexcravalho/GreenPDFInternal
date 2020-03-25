@@ -12,7 +12,6 @@ import { SubmitButton } from './SubmitButton';
 import '../dist/styles.css';
 
 interface AppState {
-
   truck: string,
   driver: string,
   helper: string,
@@ -61,33 +60,25 @@ export class Form extends Component<{}, AppState> {
 
   handleSubmit = () => {
     const createdName = this.createFileName(this.state.truck, this.state.driver, this.state.date);
-    const s = this.state;
-    const data = {
+    type Options = {
+      [key: string]: any
+    }
+    const s: Options = this.state;
+    const data: Options = {
       createdName,
-      inputs: {
-        '.truck': s.truck,
-        '.driver': s.driver,
-        '.helper': s.helper,
-        '.date': s.date,
-        '.notes': s.notes,
-        '.lsd': s.lsd,
-        '.ins': s.ins,
-        '.filter': s.filter,
-        '.coupler': s.coupler,
-        '.tabs': s.tabs,
-        '.pre': s.pre,
-        '.lube': s.lube,
-        '.product': s.product
-      },
+      inputs: {},
       checkboxes: {}
     };
-    for (const key in s) {
+    for (let key in s) {
       if (typeof s[key] === 'boolean') {
         const newKey = '.' + key
         data.checkboxes[newKey] = s[key]
       }
+      if (typeof s[key] === 'string') {
+        const newKey = '.' + key
+        data.inputs[newKey] = s[key]
+      }
     }
-
     axios.post('/pdf', data)
       // .then(res => { console.log(res) })
       // .catch(err => { console.log(err) })
