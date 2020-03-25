@@ -12,6 +12,7 @@ import { SubmitButton } from './SubmitButton';
 import '../dist/styles.css';
 
 interface AppState {
+  errorView: boolean,
   truck: string,
   driver: string,
   helper: string,
@@ -32,6 +33,7 @@ export class Form extends Component<{}, AppState> {
     super(props);
 
     this.state = {
+      errorView: false,
       truck: '',
       driver: '',
       helper: '',
@@ -48,6 +50,7 @@ export class Form extends Component<{}, AppState> {
     }
     this.appStateChange = this.appStateChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.dateFormat = this.dateFormat.bind(this);
   }
 
   appStateChange = (event: React.ChangeEvent<HTMLInputElement>, name:string) => {
@@ -71,19 +74,32 @@ export class Form extends Component<{}, AppState> {
     };
     for (const key in s) {
       if (s.hasOwnProperty(key)) {
-        if (typeof s[key] === 'boolean') {
+        if (typeof s[key] === 'boolean' && key !== 'errorView') {
           const newKey = '.' + key
           data.checkboxes[newKey] = s[key]
         }
         if (typeof s[key] === 'string') {
-          const newKey = '.' + key
+          const newKey = '.' + key;
           data.inputs[newKey] = s[key]
         }
       }
     }
+    for (const key in data.inputs) {
+      if (data.inputs.hasOwnProperty(key)) {
+        if (key !== '.notes' && key !== '.truck' && key !== '.driver' && key !== '.helper' && key !== '.product' && key !== '.pre') {
+          data.inputs[key] = this.dateFormat(data.inputs[key])
+          if (data.inputs[key] === 'Invalid Date') {
+            this.setState({...this.state, errorView:true});
+            return;
+          }
+        }
+      }
+    }
     axios.post('/pdf', data)
-      // .then(res => { console.log(res) })
-      // .catch(err => { console.log(err) })
+      // tslint:disable-next-line
+      .then(res => { console.log(res) })
+      // tslint:disable-next-line
+      .catch(err => { console.log(err) })
   };
 
   createFileName = (t: string, dr: string, da: string) => {
@@ -102,6 +118,16 @@ export class Form extends Component<{}, AppState> {
     return `${t}-${dr}-${da}.pdf`;
   }
 
+  dateFormat = (s: string) => {
+    const format = /^\d+(-|\/|.)\d+(-|\/|.)\d+$/;
+    if (!s.match(format)) {
+      return 'Invalid Date';
+    } else {
+      const d = new Date(s);
+      return d.toLocaleDateString();
+    }
+  }
+
   render() {
     return (
       <div className="full-form">
@@ -117,6 +143,7 @@ export class Form extends Component<{}, AppState> {
               <Back tabs={this.state.tabs} pre={this.state.pre} appStateChange={this.appStateChange} appStateHandleCheck={this.appStateHandleCheck}/>
               <InTruckBox appStateHandleCheck={this.appStateHandleCheck}/>
               <PassengerSide lube={this.state.lube} product={this.state.product} appStateChange={this.appStateChange} appStateHandleCheck={this.appStateHandleCheck}/>
+              {this.state.errorView && <h1>Error: Please correct date fields and click submit again</h1>}
             </div>
         </div>
         <div className="submission">
