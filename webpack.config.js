@@ -36,9 +36,10 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: [
-          'file-loader',
-        ],
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+        },
       },
       // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
       {
