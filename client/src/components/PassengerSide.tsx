@@ -51,22 +51,22 @@ export class PassengerSide extends Component<PassengerSideProps, PassengerSideSt
       <div className="passenger-side">
         <h3>Passenger Side</h3>
         <FormGroup row>
-          <FormLabel className="label" style={{color: 'black', lineHeight: '4'}}>Lube system purge/fill date: </FormLabel>
+          <FormLabel className="label" style={{color: 'black', lineHeight: '4', fontWeight:500}}>Lube system purge/fill date: </FormLabel>
           <TextField className="lube" label="MM/DD/YYYY" value={this.props.lube} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(event, 'lube')}} />
         </FormGroup>
         {this.state.labels1.map((label, idx) => (
           <LabledCheckbox key={idx} idx={idx} label={label} text="" appStateHandleCheck={this.props.appStateHandleCheck}/>
         ))}
         <FormGroup row>
-          <FormLabel className="label" style={{color: 'black', lineHeight: '2'}}>Product setting: </FormLabel>
+          <FormLabel className="label" style={{color: 'black', lineHeight: '2', fontWeight:500}}>Product setting: </FormLabel>
           <TextField className="product" value={this.props.product} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(event, 'product')}} />
-          <FormLabel className="default-two" style={{color: 'black', lineHeight: '2'}}>(default to 2)</FormLabel>
+          <FormLabel className="default-two" style={{color: 'black', lineHeight: '2', fontWeight:500}}>(default to 2)</FormLabel>
         </FormGroup>
         {this.state.labels2.map((label, idx) => (
           <LabledCheckbox key={idx} idx={idx} label={label} text="" appStateHandleCheck={this.props.appStateHandleCheck}/>
         ))}
         <FormGroup row>
-          <FormLabel className="label" style={{color: 'black', lineHeight: '2.5'}}>Truck tarp: </FormLabel>
+          <FormLabel className="label" style={{color: 'black', lineHeight: '2.5', fontWeight:500}}>Truck tarp: </FormLabel>
           {this.state.options.map((option, idx) => (
             <LabledCheckbox key={idx} idx={idx} label={option} text="Truck tarp" appStateHandleCheck={this.props.appStateHandleCheck}/>
           ))}
