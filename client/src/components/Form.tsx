@@ -9,7 +9,8 @@ import { Back } from './Back';
 import { InTruckBox } from './InTruckBox';
 import { PassengerSide } from './PassengerSide';
 import { SubmitButton } from './SubmitButton';
-import '../dist/styles.css';
+import Title from '../dist/title.png';
+// import '../dist/styles.css';
 
 interface AppState {
   dateError: boolean,
@@ -145,6 +146,9 @@ export class Form extends Component<{}, AppState> {
   render() {
     return (
       <div className="full-form">
+        <div className="header">
+          <img src={Title} alt="business title image"></img>
+        </div>
         <div className="column-container">
             <div className="form-left-column">
               <BeforeStartup notes={this.state.notes} appStateChange={this.appStateChange} appStateHandleCheck={this.appStateHandleCheck}/>
