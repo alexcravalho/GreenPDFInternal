@@ -17,7 +17,7 @@ module.exports.generatePDF = async function generatePDF(data) {
   await page.pdf({
     path: './server/' + data.createdName,
     width: 1200,
-    height: 2320,
+    height: 2400,
     printBackground: true
   });
   await browser.close();
