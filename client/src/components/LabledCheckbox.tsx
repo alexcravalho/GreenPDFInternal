@@ -77,7 +77,7 @@ export class LabledCheckbox extends Component<LabledCheckboxProps, LabledCheckbo
               onChange={this.handleChange('checked', this.classParser(this.props.label))}
               value="checked" />
           }
-          label={this.props.label}
+          label={<span style={{ fontWeight: 500 }}>{this.props.label}</span>}
         />
       </div>
     )
