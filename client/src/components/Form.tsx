@@ -12,7 +12,9 @@ import { SubmitButton } from './SubmitButton';
 import '../dist/styles.css';
 
 interface AppState {
-  errorView: boolean,
+  dateError: boolean,
+  textError: boolean,
+  thanks: boolean,
   truck: string,
   driver: string,
   helper: string,
@@ -33,7 +35,9 @@ export class Form extends Component<{}, AppState> {
     super(props);
 
     this.state = {
-      errorView: false,
+      dateError: false,
+      textError: false,
+      thanks: false,
       truck: '',
       driver: '',
       helper: '',
@@ -61,7 +65,7 @@ export class Form extends Component<{}, AppState> {
     this.setState({...this.state, [name]: event.target.checked});
   };
 
-  handleSubmit = () => {
+   handleSubmit = () => {
     const createdName = this.createFileName(this.state.truck, this.state.driver, this.state.date);
     type Options = {
       [key: string]: any
@@ -74,7 +78,7 @@ export class Form extends Component<{}, AppState> {
     };
     for (const key in s) {
       if (s.hasOwnProperty(key)) {
-        if (typeof s[key] === 'boolean' && key !== 'errorView') {
+        if (typeof s[key] === 'boolean' && key !== 'dateError' && key !== 'textError' && key !== 'thanks') {
           const newKey = '.' + key
           data.checkboxes[newKey] = s[key]
         }
@@ -89,17 +93,27 @@ export class Form extends Component<{}, AppState> {
         if (key !== '.notes' && key !== '.truck' && key !== '.driver' && key !== '.helper' && key !== '.product' && key !== '.pre') {
           data.inputs[key] = this.dateFormat(data.inputs[key])
           if (data.inputs[key] === 'Invalid Date') {
-            this.setState({...this.state, errorView:true});
+            this.setState({...this.state, dateError:true});
             return;
           }
         }
+        if (data.inputs['.truck'] === '' || data.inputs['.driver'] === '' || data.inputs['.helper'] === '') {
+          this.setState({...this.state, textError:true });
+          return;
+        }
       }
     }
+
+    this.setState({...this.state, textError:false, dateError:false, thanks:true })
+
     axios.post('/pdf', data)
       // tslint:disable-next-line
-      .then(res => { console.log(res) })
+      .then(response => setTimeout(function() {
+        window.location.reload(false);
+      }, 1000))
       // tslint:disable-next-line
       .catch(err => { console.log(err) })
+
   };
 
   createFileName = (t: string, dr: string, da: string) => {
@@ -143,7 +157,9 @@ export class Form extends Component<{}, AppState> {
               <Back tabs={this.state.tabs} pre={this.state.pre} appStateChange={this.appStateChange} appStateHandleCheck={this.appStateHandleCheck}/>
               <InTruckBox appStateHandleCheck={this.appStateHandleCheck}/>
               <PassengerSide lube={this.state.lube} product={this.state.product} appStateChange={this.appStateChange} appStateHandleCheck={this.appStateHandleCheck}/>
-              {this.state.errorView && <h1>Error: Please correct date fields and click submit again</h1>}
+              {this.state.dateError && <h1>Error: Please correct date fields then click submit again</h1>}
+              {this.state.textError && <h1>Error: Please correct Truck, Driver, and Helper fields then click submit again</h1>}
+              {this.state.thanks && <div className="thanks">Thanks! Emailing this form to Ardvark. Please wait a minute...</div>}
             </div>
         </div>
         <div className="submission">
