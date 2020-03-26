@@ -12,6 +12,18 @@ h1 {
   color:#ee1d23;
 }
 
+.thanks {
+  display: block;
+  font-size: 2em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  color:green;
+}
+
 h3 {
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
