@@ -47,11 +47,11 @@ export class InsideFromDrivers extends Component<InsideFromDriversProps, InsideF
           <LabledCheckbox key={idx} idx={idx} label={label} text="" appStateHandleCheck={this.props.appStateHandleCheck}/>
         ))}
         <FormGroup row>
-          <FormLabel className="label" style={{color: 'black', lineHeight: '4'}}>Last Service Date: </FormLabel>
+          <FormLabel className="label" style={{color: 'black', lineHeight: '4', fontWeight:500}}>Last Service Date: </FormLabel>
           <TextField className="lsd" label="MM/DD/YYYY" value={this.props.lsd} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(event, 'lsd')}} />
         </FormGroup>
         <FormGroup row>
-          <FormLabel className="label" style={{color: 'black', lineHeight: '4'}}>Insurance / Registration Expires: </FormLabel>
+          <FormLabel className="label" style={{color: 'black', lineHeight: '4', fontWeight:500}}>Insurance / Registration Expires: </FormLabel>
           <TextField className="ins" label="MM/DD/YYYY" value={this.props.ins} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(event, 'ins')}} />
         </FormGroup>
         {this.state.labels2.map((label, idx) => (

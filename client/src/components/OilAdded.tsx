@@ -23,7 +23,7 @@ export class OilAdded extends Component<OilAddedProps, OilAddedState> {
     return (
       <div >
         <FormGroup className="oil-added" row>
-          <FormLabel className="label" style={{color: 'black', lineHeight: '2.5'}}>Oil Added: </FormLabel>
+          <FormLabel className="label" style={{color: 'black', lineHeight: '2.5', fontWeight: 500}}>Oil Added: </FormLabel>
           {this.state.options.map((option, idx) => (
             <LabledCheckbox key={idx} idx={idx} label={option} text="Oil Added" appStateHandleCheck={this.props.appStateHandleCheck}/>
           ))}

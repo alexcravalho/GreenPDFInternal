@@ -43,18 +43,18 @@ export class Back extends Component<BackProps, BackState> {
           <LabledCheckbox key={idx} idx={idx} label={label} text="" appStateHandleCheck={this.props.appStateHandleCheck}/>
         ))}
         <FormGroup row>
-          <FormLabel className="label" style={{color: 'black', lineHeight: '4'}}>License plate tabs expire: </FormLabel>
+          <FormLabel className="label" style={{color: 'black', lineHeight: '4', fontWeight:500}}>License plate tabs expire: </FormLabel>
           <TextField className="tabs" label="MM/DD/YYYY" value={this.props.tabs} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(event, 'tabs')}} />
         </FormGroup>
         {this.state.labels2.map((label, idx) => (
           <LabledCheckbox key={idx} idx={idx} label={label} text="" appStateHandleCheck={this.props.appStateHandleCheck}/>
         ))}
         <FormGroup row>
-          <FormLabel className="label" style={{color: 'black', lineHeight: '2'}}>Empty or preloaded with: </FormLabel>
+          <FormLabel className="label" style={{color: 'black', lineHeight: '2', fontWeight:500}}>Empty or preloaded with: </FormLabel>
           <TextField className="pre" value={this.props.pre} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(event, 'pre')}} />
         </FormGroup>
         <FormGroup row>
-          <FormLabel className="label" style={{color: 'black', lineHeight: '2.5'}}>Box bars straight: </FormLabel>
+          <FormLabel className="label" style={{color: 'black', lineHeight: '2.5', fontWeight:500}}>Box bars straight: </FormLabel>
           {this.state.options.map((option, idx) => (
             <LabledCheckbox key={idx} idx={idx} label={option} text="Box bars straight" appStateHandleCheck={this.props.appStateHandleCheck}/>
           ))}
