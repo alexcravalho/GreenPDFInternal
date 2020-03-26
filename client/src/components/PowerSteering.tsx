@@ -23,7 +23,7 @@ export class PowerSteering extends Component<PowerSteeringProps, PowerSteeringSt
     return (
       <div className="power-steering">
         <FormGroup row>
-          <FormLabel className="label" style={{color: 'black', lineHeight: '2.5'}}>Power Steering Added: </FormLabel>
+          <FormLabel className="label" style={{color: 'black', lineHeight: '2.5', fontWeight: 500}}>Power Steering Added: </FormLabel>
           {this.state.options.map((option, idx) => (
             <LabledCheckbox key={idx} idx={idx} label={option} text="Power Steering" appStateHandleCheck={this.props.appStateHandleCheck}/>
           ))}
