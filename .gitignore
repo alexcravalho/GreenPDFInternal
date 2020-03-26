@@ -5,3 +5,4 @@ package-lock.json
 debouncefunction.js
 /server/emailAuth.js
 client/src/dist/logo.png
+client/src/dist/title.png
