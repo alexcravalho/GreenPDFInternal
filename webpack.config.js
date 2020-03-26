@@ -4,6 +4,7 @@ const src = path.join(__dirname, '/client/src');
 const dist = path.join(__dirname, '/client/src/dist');
 
 module.exports = {
+
   mode: 'development',
   devtool: "source-map",
   entry: {
@@ -41,7 +42,7 @@ module.exports = {
           name: '[name].[ext]',
         },
       },
-      // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
+      All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
       {
         enforce: "pre",
         test: /\.js$/,
