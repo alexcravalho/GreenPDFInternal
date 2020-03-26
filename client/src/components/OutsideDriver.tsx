@@ -44,11 +44,11 @@ export class OutsideDriver extends Component<OutsideDriverProps, OutsideDriverSt
           <LabledCheckbox key={idx} idx={idx} label={label} text="" appStateHandleCheck={this.props.appStateHandleCheck}/>
         ))}
         <FormGroup row>
-          <FormLabel className="label" style={{color: 'black', lineHeight: '4'}}>Blower Filter clean date: </FormLabel>
+          <FormLabel className="label" style={{color: 'black', lineHeight: '4', fontWeight:500}}>Blower Filter clean date: </FormLabel>
           <TextField className="filter" label="MM/DD/YYYY" value={this.props.filter} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(event, 'filter')}} />
         </FormGroup>
         <FormGroup row>
-          <FormLabel className="label" style={{color: 'black', lineHeight: '4'}}>Blower coupler lube date: </FormLabel>
+          <FormLabel className="label" style={{color: 'black', lineHeight: '4', fontWeight:500}}>Blower coupler lube date: </FormLabel>
           <TextField className="coupler" label="MM/DD/YYYY" value={this.props.coupler} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(event, 'coupler')}} />
         </FormGroup>
         {this.state.labels2.map((label, idx) => (
