@@ -8,8 +8,9 @@ import { TruckDriver } from './TruckDriver';
 import { Back } from './Back';
 import { InTruckBox } from './InTruckBox';
 import { PassengerSide } from './PassengerSide';
-import { SubmitButton } from './SubmitButton';
-import Title from '../dist/title.png';
+// import { SubmitButton } from './SubmitButton';
+import Title from '../dist/title.jpg';
+import Background from '../dist/logo.jpg';
 // import '../dist/styles.css';
 
 interface AppState {
@@ -54,19 +55,21 @@ export class Form extends Component<{}, AppState> {
       product: ''
     }
     this.appStateChange = this.appStateChange.bind(this);
+    this.appStateHandleCheck = this.appStateHandleCheck.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.dateFormat = this.dateFormat.bind(this);
+    this.createFileName = this.createFileName.bind(this);
   }
 
-  appStateChange = (event: React.ChangeEvent<HTMLInputElement>, name:string) => {
+  appStateChange(event: React.ChangeEvent<HTMLInputElement>, name:string) {
     this.setState({...this.state, [name]: event.target.value });
   };
 
-  appStateHandleCheck = (event: React.ChangeEvent<HTMLInputElement>, name:string) => {
+  appStateHandleCheck(event: React.ChangeEvent<HTMLInputElement>, name:string) {
     this.setState({...this.state, [name]: event.target.checked});
   };
 
-   handleSubmit = () => {
+   handleSubmit() {
     const createdName = this.createFileName(this.state.truck, this.state.driver, this.state.date);
     type Options = {
       [key: string]: any
@@ -117,7 +120,7 @@ export class Form extends Component<{}, AppState> {
 
   };
 
-  createFileName = (t: string, dr: string, da: string) => {
+  createFileName(t: string, dr: string, da: string) {
     if (t.includes(' ')) {
       t = t.split(' ').join('');
     }
@@ -133,7 +136,7 @@ export class Form extends Component<{}, AppState> {
     return `${t}-${dr}-${da}.pdf`;
   }
 
-  dateFormat = (s: string) => {
+  dateFormat (s: string) {
     const format = /^\d+(-|\/|.)\d+(-|\/|.)\d+$/;
     if (!s.match(format)) {
       return 'Invalid Date';
@@ -146,8 +149,9 @@ export class Form extends Component<{}, AppState> {
   render() {
     return (
       <div className="full-form">
+        <img className='background' src={Background} alt="logo"></img>
         <div className="header">
-          <img src={Title} alt="business title image"></img>
+          <img src={Title} alt="title"></img>
         </div>
         <div className="column-container">
             <div className="form-left-column">
@@ -167,7 +171,9 @@ export class Form extends Component<{}, AppState> {
             </div>
         </div>
         <div className="submission">
-          <SubmitButton handleSubmit={this.handleSubmit}/>
+          <div className="submit">
+            <button onClick={(event: React.MouseEvent<HTMLButtonElement>) => { this.handleSubmit() }}>Submit</button>
+          </div>
         </div>
       </div>
     )
