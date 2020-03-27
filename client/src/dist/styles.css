@@ -1,10 +1,19 @@
 .full-form {
   display: flex;
   flex-direction: column;
-  background-image: url('logo.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+  position: relative;
+  overflow: hidden;
+}
+
+.background {
+  left: 10em;
+  top: 40em;
+  position: absolute;
+  z-index: -1;
+  opacity: .2;
 }
 
 .header {
@@ -45,11 +54,21 @@ h3 {
   flex-direction: row;
 }
 
-.form-left-column, .form-right-column {
+.form-left-column {
   display: flex;
   flex-direction: column;
   margin: 40px;
   margin-top: 10px;
+  width:80%;
+}
+
+.form-right-column {
+  display: flex;
+  flex-direction: column;
+  margin: 40px;
+  margin-top: 10px;
+  margin-right: 10px;
+  width:100%;
 }
 
 .oil-added {
@@ -74,3 +93,28 @@ h3 {
   margin-top: 10px;
 }
 
+.before-startup, .inside-from-drivers, .under-seat, .outside-driver, .back, .in-truck-box, .passenger-side, .truck-driver {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+  background: #ee1d23;
+  border: 0;
+  border-radius: 3px;
+  box-shadow: 0 3px 5px 2px rgba(255, 105, 135, .3);
+  color: white;
+  height: 48px;
+  padding: 0 30px;
+  width: 100%;
+  font-size: .9375rem;
+  line-height: 1.75;
+  text-transform: uppercase;
+  letter-spacing: .02857em;
+  transition-duration: .4s;
+}
+button:hover {
+  opacity: .3;
+}
