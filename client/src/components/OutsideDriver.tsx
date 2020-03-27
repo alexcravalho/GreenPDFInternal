@@ -38,7 +38,7 @@ export class OutsideDriver extends Component<OutsideDriverProps, OutsideDriverSt
 
   render() {
     return (
-      <div className="outisde-driver">
+      <div className="outside-driver">
         <h3>Outside Driver only</h3>
         {this.state.labels1.map((label, idx) => (
           <LabledCheckbox key={idx} idx={idx} label={label} text="" appStateHandleCheck={this.props.appStateHandleCheck}/>
