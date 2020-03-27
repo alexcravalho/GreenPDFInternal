@@ -6,7 +6,6 @@ const dist = path.join(__dirname, '/client/src/dist');
 module.exports = {
 
   mode: 'development',
-  // devtool: "source-map",
   entry: {
     app: `${src}/index.tsx`,
   },
@@ -26,6 +25,7 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
+        exclude: /node_modules/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]',
