@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Checkbox, CheckboxProps } from '@material-ui/core';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { Checkbox, CheckboxProps, FormControlLabel } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { blue } from '@material-ui/core/colors';
 
@@ -33,14 +32,15 @@ export class LabledCheckbox extends Component<LabledCheckboxProps, LabledCheckbo
       checked: false
     }
     this.handleChange = this.handleChange.bind(this);
+    this.classParser = this.classParser.bind(this);
   }
 
-  handleChange = (name: string, clas: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
+  handleChange(event: React.ChangeEvent<HTMLInputElement>, name: string, clas: string) {
     this.setState({ ...this.state, [name]: event.target.checked });
     this.props.appStateHandleCheck(event, clas)
   };
 
-  classParser = (s: string) => {
+  classParser(s: string) {
     s = s.toLowerCase();
     if (this.props.text !== "") {
       s = s + '-' + this.props.text.toLowerCase();
@@ -68,18 +68,16 @@ export class LabledCheckbox extends Component<LabledCheckboxProps, LabledCheckbo
 
   render() {
     return (
-      <div className="checkbox-row">
           <FormControlLabel
           control={
             <BlueCheckbox
               className={this.classParser(this.props.label)}
               checked={this.state.checked}
-              onChange={this.handleChange('checked', this.classParser(this.props.label))}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>)=> this.handleChange(event, 'checked', this.classParser(this.props.label))}
               value="checked" />
           }
           label={<span style={{ fontWeight: 500 }}>{this.props.label}</span>}
         />
-      </div>
     )
   }
 };
