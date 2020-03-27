@@ -6,7 +6,7 @@ const dist = path.join(__dirname, '/client/src/dist');
 module.exports = {
 
   mode: 'development',
-  devtool: "source-map",
+  // devtool: "source-map",
   entry: {
     app: `${src}/index.tsx`,
   },
@@ -22,18 +22,7 @@ module.exports = {
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        loader: 'ts-loader',
-      },
-      {
-        test: /\.css$/,
-        exclude: [
-          /node_modules/,
-          /logo.jpg/
-        ],
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
+        loader: 'babel-loader',
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
@@ -41,13 +30,10 @@ module.exports = {
         options: {
           name: '[name].[ext]',
         },
-      },
-      All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-      {
-        enforce: "pre",
-        test: /\.js$/,
-        loader: "source-map-loader"
       }
-    ],
+    ]
+  },
+  optimization: {
+    concatenateModules: true
   }
 };
