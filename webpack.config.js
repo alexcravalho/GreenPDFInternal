@@ -1,16 +1,16 @@
 const path = require('path');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const src = path.join(__dirname, '/client/src');
 const dist = path.join(__dirname, '/client/src/dist');
 
 module.exports = {
-
   mode: 'development',
   entry: {
     app: `${src}/index.tsx`,
   },
   output: {
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     path: dist,
   },
   resolve: {
@@ -24,7 +24,7 @@ module.exports = {
         loader: 'babel-loader',
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
+        test: /\.(webp)$/,
         exclude: /node_modules/,
         loader: 'file-loader',
         options: {
@@ -34,6 +34,31 @@ module.exports = {
     ]
   },
   optimization: {
-    concatenateModules: true
+    concatenateModules: true,
+    minimizer: [new UglifyJsPlugin()],
+    splitChunks: {
+      chunks: 'all',
+      minSize: 30000,
+      maxSize: 0,
+      minChunks: 1,
+      maxAsyncRequests: 6,
+      maxInitialRequests: 4,
+      automaticNameDelimiter: '~',
+      automaticNameMaxLength: 30,
+      cacheGroups: {
+        material: {
+          test: /[\\/]node_modules[\\/](@material-ui|material-ui)[\\/]/,
+          name: 'vendor.material',
+          enforce: true,
+          priority: 90
+        },
+        vendor: {
+          name: 'vendor',
+          test: /[\\/]node_modules[\\/]/,
+          priority: 10,
+          enforce: true
+        }
+      }
+    }
   }
 };
