@@ -8,10 +8,8 @@ import { TruckDriver } from './TruckDriver';
 import { Back } from './Back';
 import { InTruckBox } from './InTruckBox';
 import { PassengerSide } from './PassengerSide';
-// import { SubmitButton } from './SubmitButton';
-import Title from '../dist/title.jpg';
-import Background from '../dist/logo.jpg';
-// import '../dist/styles.css';
+import Title from '../dist/title.webp';
+import Background from '../dist/logo.webp';
 
 interface AppState {
   dateError: boolean,
