@@ -1,6 +1,8 @@
 node_modules
 package-lock.json
-/client/src/dist/bundle.js
+/client/src/dist/app.bundle.js
+/client/src/dist/vendor.bundle.js
+/client/src/dist/vendor.material.bundle.js
 /server/emailAuth.js
 client/src/dist/logo.webp
 client/src/dist/title.webp
