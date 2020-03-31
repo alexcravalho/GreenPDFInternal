@@ -11,7 +11,7 @@ const { PORT = 3000 } = process.env;
 app.use(express.static(path.resolve(__dirname, '..', 'client', 'src', 'dist')));
 app.use(cors({ credentials: true, origin: true }));
 
-app.use(express.json({ limit: '100mb'}));
+app.use(express.json());
 app.use(compression({ level: 9 }));
 
 app.post('/pdf', async (req, res) => {
