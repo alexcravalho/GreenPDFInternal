@@ -13,10 +13,10 @@ module.exports.nodemailerSendEmail = async function nodemailerSendEmail(requestO
   });
   // configure mailing options with attachment
   const mailOptions = {
-    from: "test@test.com", // sender address
-    to: "test@test.com", // list of receivers
-    subject: "Test for nodemailer", // Subject line
-    text: `Here is the Pre-Checkout Checklist for ${requestObj.inputs['.driver']} on ${requestObj.inputs['.date']}`, // plain text body
+    from: authConfig.user, // sender address
+    to: authConfig.user, // list of receivers
+    subject: `The Pretrip Checklist for ${requestObj.inputs['.driver']} on ${requestObj.inputs['.date']}`, // Subject line
+    text: `Here is the Pretrip Checklist for ${requestObj.inputs['.driver']} on ${requestObj.inputs['.date']}`, // plain text body
     attachments: [
       {
         filename: requestObj.createdName,
