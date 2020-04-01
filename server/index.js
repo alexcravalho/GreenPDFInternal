@@ -6,7 +6,7 @@ const { generatePDF } = require('./generatePDF.js');
 const { nodemailerSendEmail } = require('./nodemailer.js')
 
 const app = express();
-const { PORT = 3000 } = process.env;
+const PORT = 3000;
 
 app.use(express.static(path.resolve(__dirname, '..', 'client', 'src', 'dist')));
 app.use(cors({ credentials: true, origin: true }));
