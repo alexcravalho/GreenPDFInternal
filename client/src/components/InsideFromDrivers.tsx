@@ -22,19 +22,19 @@ export class InsideFromDrivers extends Component<InsideFromDriversProps, InsideF
       labels1: [
         "Oil Pressure / 14 Volts / Fuel",
         "Cruise Set 1100 rpm",
-        "Low air warning light & buzzer",
-        "Hazards and headlights ON",
-        "Master Control Switch / Beacon / Side light",
-        "Safety glasses x 3"
+        "Low Air Warning Light & Buzzer",
+        "Hazards & Headlights On",
+        "Master Control Switch / Beacon / Side Light",
+        "Safety Glasses x 3"
       ],
       labels2: [
         "Phone Charger",
-        "Plyers / crescent wrench / Combo screw driver",
-        "Razor Blade / cross wrench / hose nozzle",
+        "Plyers / Crescent Wrench / Combo Screw Driver",
+        "Razor Blade / Cross Wrench / Hose Nozzle",
         "Pen & Zip Tie x 4",
         "Remote on Hook",
-        "Behind driver seat filled simple green bottle",
-        "Remove garbage blow floor"
+        "Behind Driver Seat Filled Simple Green Bottle",
+        "Remove Garbage & Clean Floor"
       ]
     }
   }
@@ -42,7 +42,7 @@ export class InsideFromDrivers extends Component<InsideFromDriversProps, InsideF
   render() {
     return (
       <div className="inside-from-drivers">
-        <h3>Inside from Drivers seat or Certified Helper</h3>
+        <h3>Interior Driver Side Check by Driver or Certified Helper</h3>
         {this.state.labels1.map((label, idx) => (
           <LabledCheckbox key={idx} idx={idx} label={label} text="" appStateHandleCheck={this.props.appStateHandleCheck}/>
         ))}
