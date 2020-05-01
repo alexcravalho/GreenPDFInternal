@@ -6,18 +6,18 @@ interface UnderSeatProps {
 }
 
 const labels = [
-  "Test light / Ear muffs x 2 / Duct tape x 2",
-  "Hard hats with safety vest inside x 3",
-  "Antifreeze jug Green/Orange",
-  "Oil pads minimum 10",
-  "First aid kit / fire extinguisher",
-  "Stop / Slow sign behind seat",
-  "Honk Horn exit"
+  "Test Light / Ear Protection x 2 / Duct Tape x 2",
+  "Hard Hats with Safety Vest Inside x 3",
+  "Antifreeze Jug Green/Orange",
+  "Oil Pads Minimum 10",
+  "First Aid Kit / Fire Extinguisher",
+  "Stop / Slow Sign Behind Seat",
+  "Honk Horn Exit"
 ]
 
 export const UnderSeat = (props: UnderSeatProps) => (
       <div className="under-seat">
-        <h3>Under seat</h3>
+        <h3>Interior Under Seat Check</h3>
         {labels.map((label, idx) => (
           <LabledCheckbox key={idx} idx={idx} label={label} text="" appStateHandleCheck={props.appStateHandleCheck}/>
         ))}
