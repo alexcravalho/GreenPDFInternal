@@ -21,7 +21,7 @@ export class BeforeStartup extends Component<StartupProps, StartupState> {
 
     this.state = {
       labels: [
-        "Air Filter / Panty Hoe Check",
+        "Air Filter Check",
         "Check Belt / Hoses",
         "Check Oil"
       ]
@@ -31,7 +31,7 @@ export class BeforeStartup extends Component<StartupProps, StartupState> {
   render() {
     return (
       <div className="before-startup">
-        <h3>Before Start up Driver or Certified Helper</h3>
+        <h3>Pre-ignition Check by Driver or Certified Helper</h3>
         {this.state.labels.map((label, idx) => (
           <LabledCheckbox key={idx} idx={idx} label={label} text='' appStateHandleCheck={this.props.appStateHandleCheck}/>
         ))}
