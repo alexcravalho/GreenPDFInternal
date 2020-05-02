@@ -20,18 +20,18 @@ export class OutsideDriver extends Component<OutsideDriverProps, OutsideDriverSt
 
     this.state = {
       labels1: [
-        "Close hood & latch",
-        "Check lights / beacons / flashers in front",
-        "Steer tire kick check for cuts & caps",
-        "Box spring",
-        "Hydraulic fluid level"
+        "Close Hood & Latch",
+        "Check Lights / Beacons / Flashers in Front",
+        "Steer Tire Kick Check for Cuts & Caps",
+        "Box Spring",
+        "Hydraulic Fluid Level"
       ],
       labels2: [
-        "Side light Box spring Mud flap",
-        "Drive Tires kick check for cuts & Lug nut caps",
-        "Drop Tire kick check for cuts, flat spots & caps",
-        "Tarp clamp",
-        "Side light & Box spring"
+        "Side Light Box Spring Mud Flap",
+        "Drive Tires Kick Check for Cuts & Lug Nut Caps",
+        "Drop Tire Kick Check for Cuts, Flat Spots & Caps",
+        "Tarp Clamp",
+        "Side Light & Box Spring"
       ]
     }
   }
@@ -39,16 +39,16 @@ export class OutsideDriver extends Component<OutsideDriverProps, OutsideDriverSt
   render() {
     return (
       <div className="outside-driver">
-        <h3>Outside Driver only</h3>
+        <h3>Exterior Front Check by Driver</h3>
         {this.state.labels1.map((label, idx) => (
           <LabledCheckbox key={idx} idx={idx} label={label} text="" appStateHandleCheck={this.props.appStateHandleCheck}/>
         ))}
         <FormGroup row>
-          <FormLabel className="label" style={{color: 'black', lineHeight: '4', fontWeight:500}}>Blower Filter clean date: </FormLabel>
+          <FormLabel className="label" style={{color: 'black', lineHeight: '4', fontWeight:500}}>Blower Filter Clean Date: </FormLabel>
           <TextField className="filter" label="MM/DD/YYYY" value={this.props.filter} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(event, 'filter')}} />
         </FormGroup>
         <FormGroup row>
-          <FormLabel className="label" style={{color: 'black', lineHeight: '4', fontWeight:500}}>Blower coupler lube date: </FormLabel>
+          <FormLabel className="label" style={{color: 'black', lineHeight: '4', fontWeight:500}}>Blower Coupler Lube Date: </FormLabel>
           <TextField className="coupler" label="MM/DD/YYYY" value={this.props.coupler} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(event, 'coupler')}} />
         </FormGroup>
         {this.state.labels2.map((label, idx) => (

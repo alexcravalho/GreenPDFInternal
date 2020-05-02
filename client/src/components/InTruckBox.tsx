@@ -15,12 +15,12 @@ export class InTruckBox extends Component<InTruckBoxProps, InTruckBoxState> {
 
     this.state = {
       labels: [
-        "Garden hose w/ nozzle",
+        "Garden Hose with Nozzle",
         "Tarps x 2",
-        "Blower packs with FULL tanks",
-        "Gas can 3/4 full",
-        "Fire extinguisher",
-        "NO Garbage"
+        "Blower Packs with Full Tanks",
+        "Gas Can 3/4 Full",
+        "Fire Extinguisher",
+        "No Garbage"
       ]
     }
   }
@@ -28,7 +28,7 @@ export class InTruckBox extends Component<InTruckBoxProps, InTruckBoxState> {
   render() {
     return (
       <div className="in-truck-box">
-        <h3>In Truck Box</h3>
+        <h3>Truck Storage Check by Driver or Certified Helper</h3>
         {this.state.labels.map((label, idx) => (
           <LabledCheckbox key={idx} idx={idx} label={label} text="" appStateHandleCheck={this.props.appStateHandleCheck}/>
         ))}

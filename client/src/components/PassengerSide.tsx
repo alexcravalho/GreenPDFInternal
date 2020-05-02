@@ -21,44 +21,44 @@ export class PassengerSide extends Component<PassengerSideProps, PassengerSideSt
 
     this.state = {
       labels1: [
-        "5x4 Drop out reducer",
-        "Dust valve open",
-        "Side light",
-        "Computer lights on",
-        "Interface-F1 for radio and activate dust",
-        "Switch Panel-Radio floor auto dust on auge"
+        "5x4 Drop Out Reducer",
+        "Dust Valve Open",
+        "Side Light",
+        "Computer Lights On",
+        "Interface-F1 for Radio & Activate Dust",
+        "Switch Panel-Radio Check"
       ],
       labels2: [
-        "Mud flap & Box spring",
-        "Drop tire kick check for cuts flat spots & caps",
-        "Tarp clamp",
+        "Mud Flap & Box Spring",
+        "Drop Tire Kick Check for Cuts, Flat Spots & Caps",
+        "Tarp Clamp",
         "Shovel",
-        "Drive tire kick check for cuts & caps",
-        "Side light Box spring Mud flap",
-        "Battery cover latched",
+        "Drive Tire Kick Check for Cuts & Caps",
+        "Side Light Box Spring Mud Flap",
+        "Battery Cover Latched",
         "Triangles",
-        "Drive tire kick check for cuts & caps",
-        "Antenna visible and cable secure",
-        "Work Light ON",
-        "Reverse lights and back up beeper"
+        "Drive Tire Kick Check for Cuts & Caps",
+        "Antenna Visible & Cable Secure",
+        "Work Light On",
+        "Reverse Lights & Backup Beeper"
       ],
-      options: ["good", "needs repair"]
+      options: ["Good", "Needs Repair"]
     }
   }
 
   render() {
     return (
       <div className="passenger-side">
-        <h3>Passenger Side</h3>
+        <h3>Interior Passenger Side Check by Driver or Certified Helper</h3>
         <FormGroup row>
-          <FormLabel className="label" style={{color: 'black', lineHeight: '4', fontWeight:500}}>Lube system purge/fill date: </FormLabel>
+          <FormLabel className="label" style={{color: 'black', lineHeight: '4', fontWeight:500}}>Lube System Purge/Fill Date: </FormLabel>
           <TextField className="lube" label="MM/DD/YYYY" value={this.props.lube} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(event, 'lube')}} />
         </FormGroup>
         {this.state.labels1.map((label, idx) => (
           <LabledCheckbox key={idx} idx={idx} label={label} text="" appStateHandleCheck={this.props.appStateHandleCheck}/>
         ))}
         <FormGroup row>
-          <FormLabel className="label" style={{color: 'black', lineHeight: '2', fontWeight:500}}>Product setting: </FormLabel>
+          <FormLabel className="label" style={{color: 'black', lineHeight: '2', fontWeight:500}}>Product Setting: </FormLabel>
           <TextField className="product" value={this.props.product} onChange={(event: React.ChangeEvent<HTMLInputElement>)=> {this.props.appStateChange(event, 'product')}} />
           <FormLabel className="default-two" style={{color: 'black', lineHeight: '2', fontWeight:500}}>(default to 2)</FormLabel>
         </FormGroup>
@@ -66,7 +66,7 @@ export class PassengerSide extends Component<PassengerSideProps, PassengerSideSt
           <LabledCheckbox key={idx} idx={idx} label={label} text="" appStateHandleCheck={this.props.appStateHandleCheck}/>
         ))}
         <FormGroup row>
-          <FormLabel className="label" style={{color: 'black', lineHeight: '2.5', fontWeight:500}}>Truck tarp: </FormLabel>
+          <FormLabel className="label" style={{color: 'black', lineHeight: '2.5', fontWeight:500}}>Truck Tarp: </FormLabel>
           {this.state.options.map((option, idx) => (
             <LabledCheckbox key={idx} idx={idx} label={option} text="Truck tarp" appStateHandleCheck={this.props.appStateHandleCheck}/>
           ))}
