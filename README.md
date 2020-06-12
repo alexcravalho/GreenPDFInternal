@@ -6,4 +6,4 @@ This application uses various packages to navigate to my neatly designed web for
 
 I used TypeScript and React on the front-end, then Node and Express with JavaScript on the back-end.
 
-*Disclaimer: I've excluded the company's logos to protect their privacy.
+**Disclaimer: I've excluded the company's logos to protect their privacy.
